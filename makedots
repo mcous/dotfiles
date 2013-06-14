@@ -28,9 +28,10 @@ if [ $r ]
         echo "backing up old dotfiles to $DOTOLD and symlinking new ones to $DOTNEW"
         for f in $DOTLOC/*
         do
-            if [ $f != $0 ]
+            FILE=`basename $f`
+            THIS=`basename $0`
+            if [ $FILE != $THIS ]
                 then
-                FILE=`basename $f`
                 # check if this dotfile already exists and back it up
                 if [ -f DOTNEW/.$FILE ]
                     then
