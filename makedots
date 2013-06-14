@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# michael cousins
+# june 14, 2013
+# shell script to copy my dotfiles to my home directory
+
+# dotfile directory is this one
+DOTLOC=~/dotfiles
+DOTOLD=~/dotfiles_old
+DOTNEW=~
+
+# make sure I want to copy new dotfiles in
+echo -n "hey man. want some dotfiles? (y/n): "
+read r
+if [ $r ]
+    then
+    if [ ${r:0:1} == 'y' ] || [ ${r:0:1} == 'Y' ]
+        then
+        echo "i knew you were cool."
+
+        # check for dotfiles_old directory
+        if [ ! -d $DOTOLD ]
+            then
+            echo "creating folder for old dotfiles"
+            mkdir $DOTOLD
+        fi
+        # save old dotfiles and symlink the new ones in
+        echo "backing up old dotfiles to $DOTOLD and symlinking new ones to $DOTNEW"
+        for f in $DOTLOC/*
+        do
+            if [ $f != $0 ]
+                then
+                FILE=`basename $f`
+                # check if this dotfile already exists and back it up
+                if [ -f DOTNEW/.$FILE ]
+                    then
+                    mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
+                    echo "backed up .$FILE"
+                fi
+                # symlink the new one in
+                ln -sf $f $DOTNEW/.$FILE
+                echo "symlinked $FILE"
+            fi
+        done
+    else
+        echo "come back when you wanna have some fun."
+    fi
+else
+    echo "what are you, a cop or something?"
+fi
