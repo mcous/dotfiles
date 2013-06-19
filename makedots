@@ -9,6 +9,9 @@ DOTLOC=~/dotfiles
 DOTOLD=~/dotfiles_old
 DOTNEW=~
 
+# ignore these files
+IGNORE=( README.md )
+
 # make sure I want to copy new dotfiles in
 echo -n "hey man. want some dotfiles? (y/n): "
 read r
@@ -28,19 +31,34 @@ if [ $r ]
         echo "backing up old dotfiles to $DOTOLD and symlinking new ones to $DOTNEW"
         for f in $DOTLOC/*
         do
+            # get filename
             FILE=`basename $f`
-            THIS=`basename $0`
-            if [ $FILE != $THIS ]
-                then
-                # check if this dotfile already exists and back it up
-                if [ -f DOTNEW/.$FILE ]
+            IG=0
+            # check if filename is in the ignore list
+            for i in "${IGNORE[@]}"
+            do
+                if [ $FILE == $i ]
                     then
-                    mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
-                    echo "backed up .$FILE"
+                    IG=1
                 fi
-                # symlink the new one in
-                ln -sf $f $DOTNEW/.$FILE
-                echo "symlinked $FILE"
+            done
+            # if not in the ignore list
+            if [ $IG == 0 ]
+                then
+                THIS=`basename $0`
+                # check to make sure the file is not this script
+                if [ $FILE != $THIS ]
+                    then
+                    # check if this dotfile already exists and back it up
+                    if [ -f DOTNEW/.$FILE ]
+                        then
+                        mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
+                        echo "backed up .$FILE"
+                    fi
+                    # symlink the new one in
+                    ln -sf $f $DOTNEW/.$FILE
+                    echo "symlinked $FILE"
+                fi
             fi
         done
     else
