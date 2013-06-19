@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # michael cousins
-# june 14, 2013
+# june 19, 2013
 # shell script to copy my dotfiles to my home directory
 
 # dotfile directory is this one
