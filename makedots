@@ -36,26 +36,31 @@ if [ $r ]
     then
     if [ ${r:0:1} == 'y' ] || [ ${r:0:1} == 'Y' ]
         then
-        echo "i knew you were cool."
+        echo "i knew you were cool; symlinking new dotfiles into $DOTNEW"
 
-        # check for dotfiles_old directory
-        if [ ! -d $DOTOLD ]
-            then
-            echo "creating folder for old dotfiles"
-            mkdir $DOTOLD
-        fi
-        # save old dotfiles and symlink the new ones in
-        echo "backing up old dotfiles to $DOTOLD and symlinking new ones to $DOTNEW"
+        # run through all the files in dotfiles
+        OLDDOTS=false
         for f in $DOTLOC/*
         do
             # get filename
             FILE=`basename $f`
-            # exclude files
+            # exclude any files we want to exclude
             if [[ ! $FILE =~ $IGNORE ]]
                 then
-                # check if this dotfile already exists and back it up
+                # check if this dotfile already exists
                 if [ -f DOTNEW/.$FILE ]
                     then
+                    if [ ! $OLDDOTS ]
+                        then
+                        echo "existing dotfiles will be backed up to $DOTOLD"
+                        # check to make sure there's a dotfiles_old directory
+                        if [ ! -d $DOTOLD ]
+                            then
+                            mkdir $DOTOLD
+                        fi
+                        OLDDOTS=true
+                    fi
+                    # back up the files
                     mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
                     echo "backed up .$FILE"
                 fi
