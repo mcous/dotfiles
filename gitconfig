@@ -1,0 +1,16 @@
+# gitconfig
+# michael cousins
+# july 8, 2013
+
+# private configuration files
+[include]
+	path = ~/.git_user
+# color my shit
+[color]
+	ui = true
+# simple push to suppress warnings
+[push]
+	default = simple
+# global gitignore
+[core]
+	excludesfile = ~/.gitignore_global
