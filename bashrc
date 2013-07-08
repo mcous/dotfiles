@@ -1,12 +1,21 @@
-# Prepend /usr/local/bin first in my PATH for Homebrew
-PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
-# Then prepend /usr/local/share/npm/bin for NPM
-PATH=/usr/local/share/npm/bin:$PATH
+# bashrc
+# michael cousins
+# july 7, 2013
 
-# Homebrew bash completion scripts
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# os specific profiles
+if [[ $OSTYPE =~ "darwin" ]]
+    then
+    source ~/.bash_mac
+elif [[ $OSTYPE =~ "linux" ]]
+    then
+    source ~/.bash_linux
+elif [[ $OSTYPE =~ "msys" ]]
+    then
+    source ~/.bash_windows
+else
 
 # Git stuff
 # source ~/.git-completion.bash
