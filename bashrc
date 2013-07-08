@@ -15,7 +15,7 @@ elif [[ $OSTYPE =~ "linux" ]]
 elif [[ $OSTYPE =~ "msys" ]]
     then
     source ~/.bash_windows
-else
+fi
 
 # Git stuff
 # source ~/.git-completion.bash
