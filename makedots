@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # michael cousins
-# june 19, 2013
+# july 7, 2013
 # shell script to copy my dotfiles to my home directory
 
 # dotfile directory is this one
@@ -9,8 +9,26 @@ DOTLOC=~/dotfiles
 DOTOLD=~/dotfiles_old
 DOTNEW=~
 
-# ignore these files
-IGNORE=( README.md )
+# ignore any files with extensions
+IGNORE="(.+\.[:alnum:]+)"
+# also ignore all os specific files
+IGNORE+="|(_linux)|(_mac)|(_windows)"
+# os specific files
+if [[ $OSTYPE =~ "darwin" ]]
+    then
+    CUT="|(_mac)"
+elif [[ $OSTYPE =~ "linux" ]]
+    then
+    CUT="|(_linux)"
+elif [[ $OSTYPE =~ "msys" ]]
+    then
+    CUT="|(_windows)"
+else
+    CUT=""
+fi
+# cut what we want out of ignore
+IGNORE=${IGNORE/$CUT/}
+echo "$IGNORE"
 
 # make sure I want to copy new dotfiles in
 echo -n "hey man. want some dotfiles? (y/n): "
@@ -33,18 +51,10 @@ if [ $r ]
         do
             # get filename
             FILE=`basename $f`
-            IG=0
-            # check if filename is in the ignore list
-            for i in "${IGNORE[@]}"
-            do
-                if [ $FILE == $i ]
-                    then
-                    IG=1
-                fi
-            done
-            # if not in the ignore list
-            if [ $IG == 0 ]
+            # exclude files
+            if [[ ! $FILE =~ $IGNORE ]]
                 then
+                # check for os specific files
                 THIS=`basename $0`
                 # check to make sure the file is not this script
                 if [ $FILE != $THIS ]
