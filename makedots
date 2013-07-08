@@ -39,7 +39,7 @@ if [ $r ]
         echo "i knew you were cool; symlinking new dotfiles into $DOTNEW"
 
         # run through all the files in dotfiles
-        OLDDOTS=false
+        NO_OLD=true
         for f in $DOTLOC/*
         do
             # get filename
@@ -47,18 +47,18 @@ if [ $r ]
             # exclude any files we want to exclude
             if [[ ! $FILE =~ $IGNORE ]]
                 then
-                # check if this dotfile already exists
-                if [ -f $DOTNEW/.$FILE ]
+                # check if this dotfile already exists (and is not a symlink)
+                if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]
                     then
-                    if [ ! $OLDDOTS ]
+                    if $NO_OLD
                         then
-                        echo "existing dotfiles will be backed up to $DOTOLD"
+                        echo "existing dotfiles found and will be backed up to $DOTOLD"
                         # check to make sure there's a dotfiles_old directory
                         if [ ! -d $DOTOLD ]
                             then
                             mkdir $DOTOLD
                         fi
-                        OLDDOTS=true
+                        NO_OLD=false
                     fi
                     # back up the files
                     mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
