@@ -48,7 +48,7 @@ if [ $r ]
             if [[ ! $FILE =~ $IGNORE ]]
                 then
                 # check if this dotfile already exists
-                if [ -f DOTNEW/.$FILE ]
+                if [ -f $DOTNEW/.$FILE ]
                     then
                     if [ ! $OLDDOTS ]
                         then
