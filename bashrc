@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# bash history control (ignore dupes and ignore commands with leading whitespace)
+HISTCONTROL=ignoreboth
+
 # os specific profiles
 if [[ $OSTYPE =~ "darwin" ]]
     then
