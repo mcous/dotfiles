@@ -1,0 +1,6 @@
+# bash_linux
+# michael cousins
+# july 7, 2013
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
