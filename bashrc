@@ -6,8 +6,8 @@
 [[ $- != *i* ]] && return
 
 # bash history control
-HISTCONTROL=ignoreboth
-PROMPT_COMMAND='history -a'
+export HISTCONTROL=ignoreboth
+export PROMPT_COMMAND='history -a'
 
 # os specific profiles
 if [[ $OSTYPE =~ "darwin" ]]
@@ -31,10 +31,12 @@ alias pull='git pull'
 
 # dotfiles
 alias dots='~/dotfiles/makedots'
+alias brc='source ~/.bashrc'
 
 # list
 alias ls='ls -Glp'
 alias lsa='ls -Glpa'
+alias lsn='command ls'
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 #Prompt and prompt colors
@@ -65,7 +67,7 @@ function prompt {
   local CYANBOLD="\[\033[1;36m\]"
   local WHITE="\[\033[0;37m\]"
   local WHITEBOLD="\[\033[1;37m\]"
-export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u\[\033[00m\]:$CYANBOLD\w\[\033[00m\] \n\$ "
+export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u\[\033[00m\]:$CYANBOLD\w\[\033[00m\] \\$ "
 }
 prompt
 
