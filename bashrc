@@ -67,8 +67,13 @@ function prompt {
   local CYANBOLD="\[\033[1;36m\]"
   local WHITE="\[\033[0;37m\]"
   local WHITEBOLD="\[\033[1;37m\]"
-export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u\[\033[00m\]:$CYANBOLD\w\[\033[00m\] \\$ "
+  local RESET="\[\033[00m\]"
+# two line prompt for skinny windows, one line for wide ones
+if [[ $COLUMNS < 150 ]]
+  then
+  export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $PURPLEBOLD\u$RESET@$GREENBOLD\H$RESET: \\$ "
+else
+  export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$RESET:$CYANBOLD\w$RESET \\$ "
+fi
 }
 prompt
-
-
