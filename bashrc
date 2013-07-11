@@ -24,14 +24,14 @@ fi
 # Git stuff
 # source ~/.git-completion.bash
 alias git='hub'
-alias status='git status'
+alias stat='git status'
 alias commit='git commit -am'
 alias push='git push'
 alias pull='git pull'
 
 # dotfiles
-alias dots='~/dotfiles/makedots'
 alias brc='source ~/.bashrc'
+alias dots='~/dotfiles/makedots.sh && brc'
 
 # list
 alias ls='ls -Glp'
