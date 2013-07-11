@@ -69,7 +69,7 @@ function prompt {
   local WHITEBOLD="\[\033[1;37m\]"
   local RESET="\[\033[00m\]"
 # two line prompt for skinny windows, one line for wide ones
-if [[ $COLUMNS < 150 ]]
+if [ "$COLUMNS" -lt 150 ]
   then
   export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $PURPLEBOLD\u$RESET@$GREENBOLD\H$RESET: \\$ "
 else
