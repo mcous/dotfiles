@@ -26,10 +26,11 @@
 *.sql
 *.sqlite
 
-# backups #
-###########
+# backups and temps #
+#####################
 *.bak
 *.bck
+*.tmp
 
 # OS generated files #
 ######################
