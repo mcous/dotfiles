@@ -29,7 +29,7 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   alias pbpaste='xclip -selection clipboard -o'
 
 # windows
-elif [[ $OSTYPE =~ "msys" ]]; then
+#elif [[ $OSTYPE =~ "msys" ]]; then
 
 fi
 
