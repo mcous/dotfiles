@@ -17,6 +17,7 @@ if [[ $OSTYPE =~ "darwin" ]]; then
   PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
   # Then prepend /usr/local/share/npm/bin for NPM
   PATH=/usr/local/share/npm/bin:$PATH
+  export PATH=./node_modules/.bin:$PATH
 
   # Homebrew bash completion scripts
   if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -50,6 +51,12 @@ alias ls='ls -Glp'
 alias lsa='ls -Glpa'
 alias lsn='command ls'
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# misc alias
+alias clr='clear'
+
+# ruby environment
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 #Prompt and prompt colors
 # 30m - Black
@@ -86,7 +93,7 @@ function prompt {
 #  then
 #  export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $PURPLEBOLD\u$RESET@$GREENBOLD\H$RESET: \\$ "
 # else
-  export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$RESET:$CYANBOLD\w$RESET \\$ "
+  export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$WHITEBOLD@$PURPLEBOLD\h$RESET:$CYANBOLD\w$RESET \\$ "
 # fi
 }
 prompt
