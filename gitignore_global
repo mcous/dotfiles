@@ -43,3 +43,9 @@ Icon?
 ehthumbs.db
 Thumbs.db
 ~*
+$*
+
+# KiCad #
+#########
+*.net
+*.kicad_pcb-bak
