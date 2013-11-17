@@ -56,7 +56,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 alias clr='clear'
 
 # ruby environment
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 #Prompt and prompt colors
 # 30m - Black
