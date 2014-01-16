@@ -1,6 +1,6 @@
 # bashrc
 # michael cousins
-# august 21, 2013
+# november 26, 2013
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -52,11 +52,27 @@ alias lsa='ls -Glpa'
 alias lsn='command ls'
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+# change directory and list files
+cl() {
+  if [[ -d $1 ]]; then
+    cd "$1"
+    ls
+  elif [[ $1 = '' ]]; then
+    cd ~
+    ls
+  else
+    echo "bash: cl: '$1': directory not found"
+  fi
+}
+
 # misc alias
 alias clr='clear'
 
 # ruby environment
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
+
+#pyton environment
+if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
 #Prompt and prompt colors
 # 30m - Black
