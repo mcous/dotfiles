@@ -14,34 +14,29 @@ IGNORE=`basename $0`
 # ignore any files with extensions
 IGNORE+="|(.+\.[:alnum:]+)"
 
-        # run through all the files in dotfiles
-        NO_OLD=true
-        for f in $DOTLOC/*
-        do
-            # get filename
-            FILE=`basename $f`
-            # exclude any files we want to exclude
-            if [[ ! $FILE =~ $IGNORE ]]
-                then
-                # check if this dotfile already exists (and is not a symlink)
-                if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]
-                    then
-                    if $NO_OLD
-                        then
-                        echo "existing dotfiles found and will be backed up to $DOTOLD"
-                        # check to make sure there's a dotfiles_old directory
-                        if [ ! -d $DOTOLD ]
-                            then
-                            mkdir $DOTOLD
-                        fi
-                        NO_OLD=false
-                    fi
-                    # back up the files
-                    mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
-                    echo "backed up .$FILE"
-                fi
-                # symlink the new one in
-                ln -sf $f $DOTNEW/.$FILE
-                echo "symlinked $FILE"
-            fi
-        done
+# run through all the files in dotfiles
+NO_OLD=true
+for f in $DOTLOC/*; do
+  # get filename
+  FILE=`basename $f`
+  # exclude any files we want to exclude
+  if [[ ! $FILE =~ $IGNORE ]]; then
+    # check if this dotfile already exists (and is not a symlink)
+    if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]; then
+      if $NO_OLD; then
+        echo "existing dotfiles found and will be backed up to $DOTOLD"
+        # check to make sure there's a dotfiles_old directory
+        if [ ! -d $DOTOLD ]; then
+          mkdir $DOTOLD
+        fi
+        NO_OLD=false
+      fi
+      # back up the files
+      mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
+      echo "backed up .$FILE"
+    fi
+    # symlink the new one in
+    ln -sf $f $DOTNEW/.$FILE
+    echo "symlinked $FILE"
+  fi
+done
