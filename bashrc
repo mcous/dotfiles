@@ -24,6 +24,9 @@ if [[ $OSTYPE =~ "darwin" ]]; then
       . `brew --prefix`/etc/bash_completion
   fi
 
+  # sublime text command line alias
+  alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+  
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
   alias pbcopy='xclip -selection clipboard'
