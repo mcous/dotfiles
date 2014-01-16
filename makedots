@@ -13,21 +13,7 @@ DOTNEW=~
 IGNORE=`basename $0`
 # ignore any files with extensions
 IGNORE+="|(.+\.[:alnum:]+)"
-# also ignore os specific files we don't need
-IGNORE+="|(_linux)|(_mac)|(_windows)"
-if [[ $OSTYPE =~ "darwin" ]]
-    then
-    CUT="|(_mac)"
-elif [[ $OSTYPE =~ "linux" ]]
-    then
-    CUT="|(_linux)"
-elif [[ $OSTYPE =~ "msys" ]]
-    then
-    CUT="|(_windows)"
-else
-    CUT=""
-fi
-IGNORE=${IGNORE/$CUT/}
+
 
 # make sure I want to copy new dotfiles in
 echo -n "hey man. want some dotfiles? (y/n): "
