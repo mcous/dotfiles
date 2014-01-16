@@ -47,7 +47,7 @@ alias pull='git pull'
 
 # dotfiles
 alias brc='source ~/.bashrc'
-alias dots='~/dotfiles/makedots.sh && brc'
+alias dots='~/dotfiles/makedots && brc'
 
 # list
 alias ls='ls -Glp'
