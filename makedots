@@ -14,16 +14,6 @@ IGNORE=`basename $0`
 # ignore any files with extensions
 IGNORE+="|(.+\.[:alnum:]+)"
 
-
-# make sure I want to copy new dotfiles in
-echo -n "hey man. want some dotfiles? (y/n): "
-read r
-if [ $r ]
-    then
-    if [ ${r:0:1} == 'y' ] || [ ${r:0:1} == 'Y' ]
-        then
-        echo "i knew you were cool; symlinking new dotfiles into $DOTNEW"
-
         # run through all the files in dotfiles
         NO_OLD=true
         for f in $DOTLOC/*
@@ -55,9 +45,3 @@ if [ $r ]
                 echo "symlinked $FILE"
             fi
         done
-    else
-        echo "come back when you wanna have some fun."
-    fi
-else
-    echo "what are you, a cop or something?"
-fi
