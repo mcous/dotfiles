@@ -112,13 +112,13 @@ function prompt {
   local WHITE="\[\033[0;37m\]"
   local WHITEBOLD="\[\033[1;37m\]"
   local RESET="\[\033[00m\]"
-# two line prompt for skinny windows, one line for wide ones
-# doesn't work well in bash - try something else
-# if [ "$COLUMNS" -lt 150 ]
-#  then
-#  export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $PURPLEBOLD\u$RESET@$GREENBOLD\H$RESET: \\$ "
-# else
-  export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$WHITEBOLD@$PURPLEBOLD\h$RESET:$CYANBOLD\w$RESET \\$ "
-# fi
+
+  # two line prompt for skinny windows
+  if [[ "$1" = "2" ]]; then
+    export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $GREENBOLD\u$RESET@$PURPLEBOLD\h$RESET: \\$ "
+  else
+  # one line prompt for wide ones (default)
+    export PS1="\n$BLACKBOLD[\t]$GREENBOLD \u$WHITEBOLD@$PURPLEBOLD\h$RESET:$CYANBOLD\w$RESET \\$ "
+  fi
 }
 prompt
