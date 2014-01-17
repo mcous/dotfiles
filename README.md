@@ -2,8 +2,16 @@
 my dotfiles. don't have many. probably gonna get some more. makedots script backs up old dotfiles and symlinks in new ones.
 
 ## usage
-1. `$ git clone mcous/dotfiles` (if you have [hub](http://defunkt.io/hub/) installed)
-2. `$ cd dotfiles`
-3. `$ chmod +x makedots` 
-4. `$ ./makedots`
-5. follow prompts; any overwritten dotfiles will be saved to ~/dotfiles_old
+to start using these dotfiles, open a terminal and:
+
+1. `$ git clone mcous/dotfiles` (if you have [hub](http://hub.github.com/) installed)
+2. `$ chmod +x dotfiles/makedots` 
+3. `$ dotfiles/makedots`
+
+## what it do
+the makedots script does a few things:
+
+* finds every file in `dotfiles` that doesn't have an extension and isn't the `makedots` script
+* does the same thing in `~/Dropbox/privatedots` if it exists
+* backs up any matching, non-symlink dotfiles it finds in `~` to `~/dotfiles_old`
+* symlinks the `files` to `.files` in `~`
