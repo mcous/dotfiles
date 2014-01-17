@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# source private bash files (private in that they don't live in my github)
+source ~/.bash_private
+
 # bash history control
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
@@ -31,10 +34,6 @@ if [[ $OSTYPE =~ "darwin" ]]; then
 elif [[ $OSTYPE =~ "linux" ]]; then
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
-
-# windows
-#elif [[ $OSTYPE =~ "msys" ]]; then
-
 fi
 
 # Git stuff

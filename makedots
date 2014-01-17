@@ -4,39 +4,58 @@
 # january 16, 2014
 # shell script to copy my dotfiles to my home directory
 
-# dotfile directory is this one
+# dotfile directories is this one
 DOTLOC=~/dotfiles
+# private dotfiles live in my dropbox
+PRIVDOTLOC=~/Dropbox/privatedots
+# place to backup old dotfiles
 DOTOLD=~/dotfiles_old
+# place to simlink new dotfiles into
 DOTNEW=~
 
+# identify dotfiles
+DOTS=()
 # ignore this script
 IGNORE=`basename $0`
 # ignore any files with extensions
 IGNORE+="|(.+\.[:alnum:]+)"
+# gather all the dotfiles to be linked
+for f in $DOTLOC/*; do
+  # exclude any files we want to exclude
+  if [[ ! $f =~ $IGNORE ]]; then
+    DOTS+=("$f")
+  fi
+done
+# gather any private dotfiles (if private dots directory exists)
+if [ -d $PRIVDOTLOC ]; then
+  for f in $PRIVDOTLOC/*; do
+    # exclude any files we want to exclude
+    if [[ ! $f =~ $IGNORE ]]; then
+      DOTS+=("$f")
+    fi
+  done
+fi
 
 # run through all the files in dotfiles
 NO_OLD=true
-for f in $DOTLOC/*; do
+for f in ${DOTS[@]}; do
   # get filename
   FILE=`basename $f`
-  # exclude any files we want to exclude
-  if [[ ! $FILE =~ $IGNORE ]]; then
-    # check if this dotfile already exists (and is not a symlink)
-    if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]; then
-      if $NO_OLD; then
-        echo "existing dotfiles found and will be backed up to $DOTOLD"
-        # check to make sure there's a dotfiles_old directory
-        if [ ! -d $DOTOLD ]; then
-          mkdir $DOTOLD
-        fi
-        NO_OLD=false
+  # check if this dotfile already exists (and is not a symlink)
+  if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]; then
+    if $NO_OLD; then
+      echo "existing dotfiles found and will be backed up to $DOTOLD"
+      # check to make sure there's a dotfiles_old directory
+      if [ ! -d $DOTOLD ]; then
+        mkdir $DOTOLD
       fi
-      # back up the files
-      mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
-      echo "backed up .$FILE"
+      NO_OLD=false
     fi
-    # symlink the new one in
-    ln -sf $f $DOTNEW/.$FILE
-    echo "symlinked $FILE"
+    # back up the files
+    mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
+    echo "backed up .$FILE"
   fi
+  # symlink the new one in
+  ln -sf $f $DOTNEW/.$FILE
+  echo "symlinked $FILE"
 done
