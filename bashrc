@@ -1,6 +1,6 @@
 # bashrc
 # michael cousins
-# november 26, 2013
+# january 16, 2014
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
