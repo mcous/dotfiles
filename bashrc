@@ -31,6 +31,8 @@ if [[ $OSTYPE =~ "darwin" ]]; then
 
   # sublime text command line alias
   alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+  # make sure sublime text user settings are used
+  ln -sf ~/.sublprefs ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
   
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
