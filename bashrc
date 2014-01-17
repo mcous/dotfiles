@@ -6,7 +6,9 @@
 [[ $- != *i* ]] && return
 
 # source private bash files (private in that they don't live in my github)
-source ~/.bash_private
+if [ -f ~/.bash_private ]; then
+  source ~/.bash_private
+fi
 
 # bash history control
 export HISTCONTROL=ignoreboth
