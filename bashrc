@@ -17,14 +17,9 @@ export PROMPT_COMMAND='history -a'
 # os specific profiles
 # mac
 if [[ $OSTYPE =~ "darwin" ]]; then
-  # source ~/.bash_mac
   # Prepend /usr/local/bin first in my PATH for Homebrew
   PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
-  # Then prepend /usr/local/share/npm/bin for NPM
-  PATH=/usr/local/share/npm/bin:$PATH
-  export PATH=./node_modules/.bin:$PATH
-
-  # Homebrew bash completion scripts
+  # bash completion scripts
   if [ -f `brew --prefix`/etc/bash_completion ]; then
       . `brew --prefix`/etc/bash_completion
   fi
@@ -40,13 +35,26 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   alias pbpaste='xclip -selection clipboard -o'
 fi
 
-# Git stuff
-# source ~/.git-completion.bash
-alias git='hub'
+# npm
+if which npm > /dev/null 2>&1; then
+  # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
+  PATH=/usr/local/share/npm/bin:$PATH
+  PATH=./node_modules/.bin:$PATH
+fi
+
+# ruby environment
+if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
+
+#pyton environment
+if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
+
+# git stuff
+if which hub > /dev/null 2>&1; then alias git='hub'; fi
 alias stat='git status'
 alias commit='git commit -am'
 alias push='git push'
 alias pull='git pull'
+alias gd='git diff'
 
 # dotfiles
 alias brc='source ~/.bashrc'
@@ -74,11 +82,6 @@ cl() {
 # misc alias
 alias clr='clear'
 
-# ruby environment
-if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
-
-#pyton environment
-if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
 #Prompt and prompt colors
 # 30m - Black
