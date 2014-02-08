@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # source private bash files (private in that they don't live in my github)
-if [ -f ~/.bash_private ]; then
+if [[ -f ~/.bash_private ]]; then
   source ~/.bash_private
 fi
 
