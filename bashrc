@@ -33,6 +33,11 @@ if [[ $OSTYPE =~ "darwin" ]]; then
 elif [[ $OSTYPE =~ "linux" ]]; then
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
+
+# msys (windows)
+elif [[ $OSTYPE =~ "msys" ]]; then
+  # copy sublime text user settings
+  ln -sf ~/.sublprefs ~/AppData/Roaming/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
 fi
 
 # npm
