@@ -46,6 +46,10 @@ Thumbs.db
 ~*
 $*
 
+# Environments #
+################
+*.env
+
 # KiCad #
 #########
 *.net
