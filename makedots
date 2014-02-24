@@ -36,26 +36,66 @@ if [ -d $PRIVDOTLOC ]; then
   done
 fi
 
-# run through all the files in dotfiles
+# run through all the files in DOTS array
 NO_OLD=true
 for f in ${DOTS[@]}; do
+  # objects
+  OBJ=()
   # get filename
   FILE=`basename $f`
-  # check if this dotfile already exists (and is not a symlink)
-  if [ -f $DOTNEW/.$FILE ] && [ ! -h $DOTNEW/.$FILE ]; then
-    if $NO_OLD; then
-      echo "existing dotfiles found and will be backed up to $DOTOLD"
+  # check if f is a directory
+  if [ -d $f ]; then
+    # loop over files in directory and add them to objects
+    for o in $f/*; do
+      # exclude any files we want to exclude
+      if [[ ! $o =~ $IGNORE ]]; then
+        OBJ+=(`basename $o`)
+      fi
+    done
+  else
+    OBJ+=("$FILE")
+  fi
+
+  # loop over objects
+  for o in ${OBJ[@]}; do
+    DIR=""
+    # if the object is in a directory
+    if [ "$FILE" != "$o" ]; then
+      DIR="$FILE"
+      # make sure dot dir exists
+      if [ ! -d $DOTNEW/.$FILE ]; then
+        mkdir $DOTNEW/.$FILE
+        echo "creating .$FILE directory"
+      fi
+    fi
+
+    # # check if this dotfile already exists (and is not a symlink)
+    if [ -f $DOTNEW/.$DIR/$o ] && [ ! -h $DOTNEW/.$DIR/$o ]; then
+      if $NO_OLD; then
+        echo "existing dotfiles found and will be backed up to $DOTOLD"
+      fi
       # check to make sure there's a dotfiles_old directory
       if [ ! -d $DOTOLD ]; then
+        echo "creating $DOTOLD directory"
         mkdir $DOTOLD
       fi
+      if [ ! -d $DOTOLD/$DIR ]; then
+        echo "creating $DOTOLD/$DIR directory"
+        mkdir $DOTOLD/$DIR
+      fi
+      # clear the flag so we don't get the backup message again
       NO_OLD=false
+      # back up the files
+      mv -f $DOTNEW/.$DIR/$o $DOTOLD/$DIR/$o
+      echo "backed up $o"
     fi
-    # back up the files
-    mv -f $DOTNEW/.$FILE $DOTOLD/.$FILE
-    echo "backed up .$FILE"
-  fi
-  # symlink the new one in
-  ln -sf $f $DOTNEW/.$FILE
-  echo "symlinked $FILE"
+
+    # symlink the new one in
+    if [ "$FILE" = "$o" ]; then
+      ln -sf $f $DOTNEW/.$o
+    else
+      ln -sf $f/$o $DOTNEW/.$DIR/$o
+    fi
+    echo "symlinked $o"
+  done
 done
