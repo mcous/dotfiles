@@ -31,8 +31,16 @@ if [[ $OSTYPE =~ "darwin" ]]; then
   
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
+  # include sbins and private bin in the PATH if directories exist
+	if [ -d "/sbin" ] ; then
+		PATH="/sbin:$PATH"
+	fi
+  if [ -d "/usr/sbin" ] ; then
+    PATH="/usr/sbin:$PATH"
+  fi
+  if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+  fi
 
 # msys (windows)
 elif [[ $OSTYPE =~ "msys" ]]; then
