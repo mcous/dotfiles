@@ -58,7 +58,7 @@ fi
 # ruby environment
 if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
-  export PATH="./binstubs:$PATH"
+  export PATH="./bin:$PATH"
 fi
 
 #pyton environment
