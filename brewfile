@@ -1,0 +1,34 @@
+# set up my standard brew formulae
+
+# update and upgrade all packages
+update
+upgrade
+
+# version control
+install git
+install hub
+
+# make terminal better (vim ftw)
+install vim
+install bash-completion
+
+# ruby
+install rbenv
+install ruby-build
+install rbenv-gem-rehash
+
+# webdev stuff
+install node
+install heroku
+install postgres
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
