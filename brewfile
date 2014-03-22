@@ -23,9 +23,5 @@ install node
 install heroku
 install postgres
 
-
-#
-#
-#
-#
-#
+# cleanup once it's over
+cleanup
