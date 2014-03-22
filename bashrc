@@ -1,6 +1,6 @@
 # bashrc
 # michael cousins
-# january 16, 2014
+# march 22, 2014
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -25,7 +25,7 @@ if [[ $OSTYPE =~ "darwin" ]]; then
   fi
 
   # sublime text command line alias
-  alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+  # alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
   # make sure sublime text user settings are used
   ln -sf ~/.sublprefs ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
   

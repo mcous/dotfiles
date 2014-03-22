@@ -4,10 +4,10 @@
 update
 upgrade
 cleanup
-cask cleanup
 
 # managed by homebrew-cask
 install phinze/cask/brew-cask
+cask cleanup
 
 # get alfred up in this bitch
 cask install alfred

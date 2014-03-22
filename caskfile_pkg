@@ -4,16 +4,19 @@
 update
 upgrade
 cleanup
+
+# managed by homebrew-cask
+install phinze/cask/brew-cask
 cask cleanup
+
+# development tools
+cask install xquartz
+cask install parallels
+cask install virtualbox
+cask install crosspack-avr
 
 # because without netflix I am nothing
 cask install silverlight
-
-# development tools
-cask install parallels
-cask install virtualbox
-cask install xquartz
-cask install crosspack-avr
 
 # cleanup afterwards
 cask cleanup

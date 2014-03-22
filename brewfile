@@ -23,5 +23,8 @@ install node
 install heroku
 install postgres
 
+# avr development
+install avrdude
+
 # cleanup once it's over
 cleanup
