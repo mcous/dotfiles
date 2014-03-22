@@ -1,0 +1,19 @@
+# gui applications that install pkgs (so password is required)
+
+# update and upgrade all packages and cleanup old versions
+update
+upgrade
+cleanup
+cask cleanup
+
+# because without netflix I am nothing
+cask install silverlight
+
+# development tools
+cask install parallels
+cask install virtualbox
+cask install xquartz
+cask install crosspack-avr
+
+# cleanup afterwards
+cask cleanup

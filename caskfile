@@ -1,0 +1,43 @@
+# gui applications
+
+# update and upgrade all packages and cleanup old versions
+update
+upgrade
+cleanup
+cask cleanup
+
+# managed by homebrew-cask
+install phinze/cask/brew-cask
+
+# get alfred up in this bitch
+cask install alfred
+cask alfred link
+
+# tubez and cloudz
+cask install caskroom/versions/google-chrome-beta
+cask install google-drive
+cask install transmission
+cask install evernote
+cask install dropbox
+
+# sanity
+cask install bartender
+cask install iterm2
+cask install caskroom/versions/sublime-text3
+cask install appcleaner
+
+# devtools
+cask install pg-commander
+
+# entertaining myself
+cask install rdio
+cask install minecraft
+cask install steam
+
+# open source fun times
+cask install arduino
+cask install processing
+cask install fritzing
+
+# cleanup once it's over
+cask cleanup
