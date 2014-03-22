@@ -1,8 +1,9 @@
 # set up my standard brew formulae
 
-# update and upgrade all packages
+# update and upgrade all packages and cleanup old versions
 update
 upgrade
+cleanup
 
 # version control
 install git
@@ -22,11 +23,7 @@ install node
 install heroku
 install postgres
 
-#
-#
-#
-#
-#
+
 #
 #
 #
