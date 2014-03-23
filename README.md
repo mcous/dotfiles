@@ -39,6 +39,10 @@ Looking to update my laptop soon, so doing some up-front work. Here's the proced
     * `$ brew install hub`
     * `$ hub clone -p dotfiles ~/dotfiles`
 9. clone the dotfiles
-    * `chomd +x ~/dotfiles/makedots && ~/dotfiles/makedots`
+    * `$ chomd +x ~/dotfiles/makedots && ~/dotfiles/makedots`
+10. set up dropbox and let stuff sync (most importantly, this is where gui app prefs live)
+    * `$ open ~/Applications/Dropbox`
+    * prompt for user confirmation that `~/Dropbox/mackup` has synced
+    * `$ mackup restore`
 10. exit the terminal session
     * `$ echo "exiting terminal session. ok to close window" && exit 0`

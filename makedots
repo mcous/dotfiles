@@ -17,8 +17,6 @@ DOTNEW=~
 DOTS=()
 # ignore this script
 IGNORE=`basename $0`
-# ignore any files with dots
-IGNORE+="|(.*\..*)"
 # ignore any files in the 'do_not_link' list
 while read line; do
   IGNORE+="|$line"
@@ -98,9 +96,10 @@ for f in ${DOTS[@]}; do
     # symlink the new one in
     if [ "$FILE" = "$o" ]; then
       ln -sf $f $DOTNEW/.$o
+      echo "symlinked .$o"
     else
       ln -sf $f/$o $DOTNEW/.$DIR/$o
+      echo "symlinked .$DIR/$o"
     fi
-    echo "symlinked $o"
   done
 done

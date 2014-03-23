@@ -26,5 +26,8 @@ install postgres
 # avr development
 install avrdude
 
+# application pref sync
+install mackup
+
 # cleanup once it's over
 cleanup
