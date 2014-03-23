@@ -22,10 +22,10 @@ end_script () {
 link_prefs () {
   echo ""
   echo "step 9 - linking application preferences"
-  if [ -f ~/$dots/makedots ]; then
+  if [ -f ~/$dots/linkdots ]; then
       echo "linking dotfiles into home directory"
-      chmod +x ~/$dots/makedots
-      ~/$dots/makedots
+      chmod +x ~/$dots/linkdots
+      ~/$dots/linkdots
   fi
   if $mackup; then
     if which mackup > /dev/null 2>&1; then
@@ -232,7 +232,7 @@ generate_ssh_keypair () {
 set_up_shop () {
   echo "awesome. dibs on top bunk"
   # step 1 - generate an ssh keypair for github
-  #generate_ssh_keypair
+  generate_ssh_keypair
   # step 2 - install the command line tools for xcode
   install_xcode_clt
   # step 3 - install homebrew

@@ -1,23 +1,25 @@
 # dotfiles
-My dotfiles. Don't have many. Probably gonna get some more. `makedots` script backs up old dotfiles and symlinks in new ones. Hopefully soon I'll have a `deploy` script to deploy my OSX system to a new computer or install.
+My dotfiles for OSX, Linux, and Windows, as well as my system setup for OSX. For cli applications in whatever OS, I've got me a `linkdots` script that links my dotfiles into the home directory. For OSX, I have a brewfile to manage my cli applications with homebrew, a couple caskfiles to manage my gui applications with homebrew-cask, and a mackup configuration to save and sync my gui application preferences.
 
-## usage
+Finally, I've got a 
+
+## dotfile usage
 to start using these dotfiles, open a terminal and:
 
 1. `$ git clone mcous/dotfiles` (if you have [hub](http://hub.github.com/) installed)
 2. `$ chmod +x dotfiles/makedots` 
 3. `$ dotfiles/makedots`
 
-## what it do
-the makedots script does a few things:
+## linking the dotfiles
+the `makedots` script does a few things:
 
 * finds every file in `dotfiles` that doesn't have any dots in the filename, isn't the `makedots` script, and isn't listed in `do_not_link`
 * does the same thing in `~/Dropbox/privatedots` if it exists
 * backs up any matching, non-symlink dotfiles it finds in `~` to `~/dotfiles_old`
 * symlinks the `files` to `.files` in `~`
 
-## deploy to new OSX install
-Looking to update my laptop soon, so doing some up-front work. Here's the procedure for a deploy script.
+## deploying to new OSX install
+I've got an (untested) deploy script named `deploy` that's supposed to set up my system from a new OSX install. 
 
 1. ask for user github email, generate an ssh keypair, copy public key to the clipboard, and open github ssh page
     * `$ ssh-keygen -t rsa -C "$EMAIL"`
