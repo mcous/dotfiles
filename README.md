@@ -1,7 +1,7 @@
 # dotfiles
 My dotfiles for OSX, Linux, and Windows, as well as my system setup for OSX. For cli applications in whatever OS, I've got me a `linkdots` script that links my dotfiles into the home directory. For OSX, I also have a brewfile to manage my cli applications with [homebrew](http://brew.sh), a couple caskfiles to manage my gui applications with [homebrew-cask](http://caskroom.io), and a [mackup](https://github.com/lra/mackup) configuration to save and sync my gui application preferences.
 
-Finally, I've got a fancy little (thouroughly **un**tested) `deploy` script for setting up a new OSX environment that I can call with:
+Finally, I've got a fancy little (**thouroughly untested**) `deploy` script for setting up a new OSX environment that I can call with:
 
 `$ bash -c "$(curl -fsSL https://raw.github.com/mcous/dotfiles/master/deploy)"`
 
