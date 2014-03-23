@@ -19,30 +19,27 @@ the makedots script does a few things:
 ## deploy to new OSX install
 Looking to update my laptop soon, so doing some up-front work. Here's the procedure for a deploy script.
 
-1. ask for user github email, generate an ssh keypair, and copy public key to the clipboard
+1. ask for user github email, generate an ssh keypair, copy public key to the clipboard, and open github ssh page
     * `$ ssh-keygen -t rsa -C "$EMAIL"`
     * `$ ssh-add ~/.ssh/id_rsa`
     * `$ pbcopy < ~/.ssh/id_rsa.pub`
-2. open github.com ssh page to add key to github account (user does the rest)
     * `$ open https://github.com/settings/ssh`
-3. install Xcode CLT (this will take a little while)
+2. install Xcode CLT (this will take a little while)
     * `$ xcode-select --install` on Mavericks
-4. install homebrew
+3. install homebrew
     * `$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
-5. install gui pkgs (includes XQuartz for later CLI applications, and requires password)
+4. install gui pkgs (includes XQuartz for later CLI applications, and requires password)
     * `$ curl -fSsl https://raw.github.com/mcous/dotfiles/master/caskfile_pkg > Brewfile && brew bundle && rm Brewfile`
-6. install homebrew apps
+5. install homebrew apps
     * `$ curl -fSsl https://raw.github.com/mcous/dotfiles/master/brewfile > Brewfile && brew bundle && rm Brewfile`
-7. install remaining gui apps
+6. install remaining gui apps
     * `$ curl -fSsl https://raw.github.com/mcous/dotfiles/master/caskfile > Brewfile && brew bundle && rm Brewfile`
-8. install hub and use it to clone dotfiles (will require github password and two-factor)
-    * `$ brew install hub`
+7. use hub to clone dotfiles (will require github password and two-factor)
     * `$ hub clone -p dotfiles ~/dotfiles`
-9. clone the dotfiles
     * `$ chomd +x ~/dotfiles/makedots && ~/dotfiles/makedots`
-10. set up dropbox and let stuff sync (most importantly, this is where gui app prefs live)
+8. set up dropbox and let stuff sync (most importantly, this is where gui app prefs live)
     * `$ open ~/Applications/Dropbox`
     * prompt for user confirmation that `~/Dropbox/mackup` has synced
     * `$ mackup restore`
-10. exit the terminal session
+9. exit the terminal session
     * `$ echo "exiting terminal session. ok to close window" && exit 0`

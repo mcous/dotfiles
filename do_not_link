@@ -1,4 +1,5 @@
 do_not_link
 README.md
+deploy
 brewfile
 caskfile
