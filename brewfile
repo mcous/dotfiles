@@ -21,10 +21,13 @@ install rbenv-gem-rehash
 # webdev stuff
 install node
 install heroku
-install postgres
+install postgresql
 
 # avr development
 install avrdude
+
+# give me some vnc
+install tiger-vnc
 
 # application pref sync
 install mackup
