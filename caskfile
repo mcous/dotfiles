@@ -10,26 +10,24 @@ install phinze/cask/brew-cask
 cask cleanup
 
 # get alfred up in this bitch
-# alfred can sync in pro version
 cask install alfred
 cask alfred link
 
 # tubez and cloudz
 cask install caskroom/versions/google-chrome-beta
 cask install google-drive
-# transmission settings saved by mackup
 cask install transmission
 cask install evernote
 cask install dropbox
+cask install dashlane
 
 # sanity
-# bartender settings saved by mackup
+cask install bettertouchtool
 cask install bartender
-# iterm2 settings saved by mackup
 cask install iterm2
-# sublime text 3 settings saved by mackup
 cask install caskroom/versions/sublime-text3
 cask install appcleaner
+cask install caffeine
 
 # devtools
 cask install pg-commander
@@ -38,14 +36,15 @@ cask install pg-commander
 cask install rdio
 cask install minecraft
 cask install steam
+cask install gog-downloader
 
 # open source fun times
-# arduino prefs live in ~/Library/Arduino/preferences.txt
 cask install arduino
-# processing settings saved by mackup
 cask install processing
-# fritzing prefs live in ~/Library/Preferences/org.fritzing.Fritzing.plist
 cask install fritzing
+
+# laptop with SSD
+cask install trim-enabler
 
 # cleanup once it's over
 cask cleanup

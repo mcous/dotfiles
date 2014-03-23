@@ -18,5 +18,8 @@ cask install crosspack-avr
 # because without netflix I am nothing
 cask install silverlight
 
+# other fun stuff
+cask install xtrafinder
+
 # cleanup afterwards
 cask cleanup
