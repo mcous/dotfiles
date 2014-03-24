@@ -23,7 +23,10 @@ the `linkdots` script:
 4. symlinks the `files` to `~/.files` and the `directory/files` to `~/.directory/files`
 
 ## deploying to new OSX install
-I've got an (**untested**) deploy script named `deploy` that's supposed to set up my system on a new OSX install. For some reason I tried to make it slightly adaptable to different setups. It's not an unattended setup, but large chunks (like installing the applications) should be automatic.
+I've got an (**untested**) deploy script named `deploy` that's supposed to set up my system on a new OSX install. It's not an unattended setup, but large chunks (like installing the applications) should be automatic.
+
+### deploy dependencies
+    * script is currently hard coded to my dotfiles repository; so be me, I guess
 
 ### deploy
 1. generates an ssh keypair for github
@@ -44,7 +47,6 @@ I've got an (**untested**) deploy script named `deploy` that's supposed to set u
 7. clones dotfiles
     * this step also sets up `hub`
     * user needs to put in their github username, password, and two-factor code (if enabled)
-    * they also need to put in the name of their `dotfiles` repository
 8. sets up dropbox and syncs important files
     * opens up dropbox (which was installed in step 6)
     * user needs to follow prompts for using dropbox for private dotfiles and/or `mackup`
@@ -53,3 +55,4 @@ I've got an (**untested**) deploy script named `deploy` that's supposed to set u
     * `$ ~/dotfiles/linkdots`
     * `$ mackup restore`
 10. exits the script
+

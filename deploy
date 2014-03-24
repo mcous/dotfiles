@@ -106,17 +106,17 @@ clone_dotfiles () {
   echo ""
   echo "step 7 - set up hub and clone your dotfiles"
   echo "user input required"
-  confirm=false
-  while ! $confirm; do
-    echo -n "enter the name of your dotfiles repository [dotfiles]: "; read dots
-    if [ ! $dots ]; then
+  # confirm=false
+  # while ! $confirm; do
+  #   echo -n "enter the name of your dotfiles repository [dotfiles]: "; read dots
+  #   if [ ! $dots ]; then
       dots="dotfiles"
-    fi
-    echo -n "please confirm that your dotfile repository is ${bold}$dots${normal} [Y/n]: "; read r
-    if [[ ${r:0:1} != 'n' && ${r:0:1} != 'N' ]]; then
-      confirm=true
-    fi
-  done
+  #   fi
+  #   echo -n "please confirm that your dotfile repository is ${bold}$dots${normal} [Y/n]: "; read r
+  #   if [[ ${r:0:1} != 'n' && ${r:0:1} != 'N' ]]; then
+  #     confirm=true
+  #   fi
+  # done
   # do the actual cloning. ssh keys should've been set up by now
   hub clone -p "$dots" ~/"$dots"
   echo "step 7 complete"
@@ -223,7 +223,7 @@ generate_ssh_keypair () {
   ssh-keygen -t rsa -C "$GH_EMAIL"
   ssh-add ~/.ssh/id_rsa
   pbcopy < ~/.ssh/id_rsa.pub
-  echo "ssh public key has been copied to the clipboard. press enter to go to github.com and add it to your account"; read r
+  echo "ssh public key has been copied to the clipboard. to go to github.com and add it to your account, press enter"; read r
   open https://github.com/settings/ssh
   echo "step 1 complete"
 }
