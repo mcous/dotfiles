@@ -31,16 +31,29 @@ if [[ $OSTYPE =~ "darwin" ]]; then
   
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
+  # bash completion
+  if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+
   # include sbins and private bin in the PATH if directories exist
-	if [ -d "/sbin" ] ; then
-		PATH="/sbin:$PATH"
-	fi
+  if [ -d "/sbin" ] ; then
+	 PATH="/sbin:$PATH"
+  fi
   if [ -d "/usr/sbin" ] ; then
     PATH="/usr/sbin:$PATH"
   fi
   if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
   fi
+  
+  # include avr toolchain in path if it exists
+  if [ -d "$HOME/avr/bin" ] ; then
+	 PATH="$HOME/avr/bin:$PATH"
+  fi
+
+  # make sure sublime text user settings are used
+  ln -sf ~/.sublprefs ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
 # msys (windows)
 elif [[ $OSTYPE =~ "msys" ]]; then
