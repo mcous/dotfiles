@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # michael cousins
-# january 16, 2014
+# march 22, 2014
 # shell script to copy my dotfiles to my home directory
 
 # dotfile directories is this one
@@ -17,8 +17,11 @@ DOTNEW=~
 DOTS=()
 # ignore this script
 IGNORE=`basename $0`
-# ignore any files with extensions
-IGNORE+="|(.+\.[:alnum:]+)"
+# ignore any files in the 'do_not_link' list
+while read line; do
+  IGNORE+="|$line"
+done < "$DOTLOC/do_not_link"
+
 # gather all the dotfiles to be linked
 for f in $DOTLOC/*; do
   # exclude any files we want to exclude
@@ -93,9 +96,10 @@ for f in ${DOTS[@]}; do
     # symlink the new one in
     if [ "$FILE" = "$o" ]; then
       ln -sf $f $DOTNEW/.$o
+      echo "symlinked .$o"
     else
       ln -sf $f/$o $DOTNEW/.$DIR/$o
+      echo "symlinked .$DIR/$o"
     fi
-    echo "symlinked $o"
   done
 done

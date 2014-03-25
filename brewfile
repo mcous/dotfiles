@@ -1,0 +1,36 @@
+# set up my standard brew formulae
+
+# update and upgrade all packages and cleanup old versions
+update
+upgrade
+cleanup
+
+# version control
+install git
+install hub
+
+# make terminal better (vim ftw)
+install vim
+install bash-completion
+
+# ruby
+install rbenv
+install ruby-build
+install rbenv-gem-rehash
+
+# webdev stuff
+install node
+install heroku
+install postgresql
+
+# avr development
+install avrdude
+
+# give me some vnc
+install tiger-vnc
+
+# application pref sync
+install mackup
+
+# cleanup once it's over
+cleanup
