@@ -28,7 +28,7 @@ if [[ $OSTYPE =~ "darwin" ]]; then
   # alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
   # make sure sublime text user settings are used
   #ln -sf ~/.sublprefs ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-  
+
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
   # bash completion
@@ -46,7 +46,7 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
   fi
-  
+
   # include avr toolchain in path if it exists
   if [ -d "$HOME/avr/bin" ] ; then
 	 PATH="$HOME/avr/bin:$PATH"
@@ -80,10 +80,12 @@ if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 # git stuff
 if which hub > /dev/null 2>&1; then alias git='hub'; fi
 alias stat='git status'
-alias commit='git commit -am'
+alias gc='git commit -m'
+alias gca='git commit -am'
 alias push='git push'
 alias pull='git pull'
 alias gd='git diff'
+alias gl='git log'
 
 # dotfiles
 alias brc='source ~/.bashrc'
