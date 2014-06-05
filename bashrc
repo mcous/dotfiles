@@ -24,11 +24,13 @@ if [[ $OSTYPE =~ "darwin" ]]; then
       . `brew --prefix`/etc/bash_completion
   fi
 
+  # help out atom
+  export ATOM_PATH="${HOME}/Applications"
   # sublime text command line alias
   # alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
   # make sure sublime text user settings are used
   #ln -sf ~/.sublprefs ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
-  
+
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
   # bash completion
@@ -46,7 +48,7 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
   fi
-  
+
   # include avr toolchain in path if it exists
   if [ -d "$HOME/avr/bin" ] ; then
 	 PATH="$HOME/avr/bin:$PATH"
