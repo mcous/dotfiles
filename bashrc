@@ -82,10 +82,12 @@ if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 # git stuff
 if which hub > /dev/null 2>&1; then alias git='hub'; fi
 alias stat='git status'
-alias commit='git commit -am'
+alias gc='git commit -m'
+alias gca='git commit -am'
 alias push='git push'
 alias pull='git pull'
 alias gd='git diff'
+alias gl='git log'
 
 # dotfiles
 alias brc='source ~/.bashrc'
