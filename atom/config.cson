@@ -11,6 +11,7 @@
   'fontSize': 14
   'softWrap': true
   'showIndentGuide': true
+  'fontFamily': 'Source Code Pro'
 'core':
   'themes': [
     'atom-dark-ui'
