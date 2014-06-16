@@ -99,7 +99,7 @@ for f in ${DOTS[@]}; do
       echo "symlinked .$o"
     else
       ln -sf $f/$o $DOTNEW/.$DIR$o
-      echo "symlinked .$DIR/$o"
+      echo "symlinked .$DIR$o"
     fi
   done
 done
