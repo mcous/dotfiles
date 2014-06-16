@@ -64,7 +64,7 @@ for f in ${DOTS[@]}; do
     DIR=""
     # if the object is in a directory
     if [ "$FILE" != "$o" ]; then
-      DIR="$FILE"
+      DIR="$FILE/"
       # make sure dot dir exists
       if [ ! -d $DOTNEW/.$FILE ]; then
         mkdir $DOTNEW/.$FILE
@@ -73,7 +73,7 @@ for f in ${DOTS[@]}; do
     fi
 
     # # check if this dotfile already exists (and is not a symlink)
-    if [ -f $DOTNEW/.$DIR/$o ] && [ ! -h $DOTNEW/.$DIR/$o ]; then
+    if [ -f $DOTNEW/.$DIR$o ] && [ ! -h $DOTNEW/.$DIR$o ]; then
       if $NO_OLD; then
         echo "existing dotfiles found and will be backed up to $DOTOLD"
       fi
@@ -89,7 +89,7 @@ for f in ${DOTS[@]}; do
       # clear the flag so we don't get the backup message again
       NO_OLD=false
       # back up the files
-      mv -f $DOTNEW/.$DIR/$o $DOTOLD/$DIR/$o
+      mv -f $DOTNEW/.$DIR$o $DOTOLD/$DIR$o
       echo "backed up $o"
     fi
 
@@ -98,8 +98,8 @@ for f in ${DOTS[@]}; do
       ln -sf $f $DOTNEW/.$o
       echo "symlinked .$o"
     else
-      ln -sf $f/$o $DOTNEW/.$DIR/$o
-      echo "symlinked .$DIR/$o"
+      ln -sf $f/$o $DOTNEW/.$DIR$o
+      echo "symlinked .$DIR$o"
     fi
   done
 done
