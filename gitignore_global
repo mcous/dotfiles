@@ -9,6 +9,7 @@
 *.hex
 *.elf
 *.map
+*.lst
 
 # Packages #
 ############
