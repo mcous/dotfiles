@@ -29,10 +29,10 @@ alias clr='clear'
 
 # change directory and list files
 cl() {
-  if [[ -d $1 ]]; then
+  if [ -d "$1" ]; then
     cd "$1"
     ls
-  elif [[ $1 = '' ]]; then
+  elif [ "$1" = '' ]; then
     cd ~
     ls
   else

@@ -4,10 +4,10 @@
 [[ $- != *i* ]] && return
 
 # source private bash files from my dropbox if they exist
-if [[ -f ~/.bash_private ]]; then . ~/.bash_private; fi
+if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
 
 # set aliases
-if [[ -f ~/.bash_aliases ]]; then . ~/.bash_aliases; fi
+if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 # bash history control
 export HISTCONTROL=ignoreboth
@@ -33,6 +33,9 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   # include sbins and private bin in the PATH if directories exist
   if [ -d "/sbin" ] ; then PATH="/sbin:$PATH"; fi
   if [ -d "/usr/sbin" ] ; then PATH="/usr/sbin:$PATH"; fi
+
+# end OS if
+fi
 
 # npm
 if which npm > /dev/null 2>&1; then
@@ -80,7 +83,7 @@ function prompt {
   local RESET="\[\033[00m\]"
 
   # two line prompt for skinny windows
-  if [[ "$1" = "2" ]]; then
+  if [ "$1" = "2" ]; then
     export PS1="\n$BLACKBOLD[\t] $CYANBOLD\w\n  $GREENBOLD\u$RESET@$PURPLEBOLD\h$RESET: \\$ "
   else
   # one line prompt for wide ones (default)
