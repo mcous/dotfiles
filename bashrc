@@ -9,6 +9,9 @@ if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
 # set aliases
 if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
+# cdpath for home directory and projects folder
+export CDPATH=.:~:~/projects
+
 # bash history control
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
