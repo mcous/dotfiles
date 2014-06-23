@@ -1,73 +1,43 @@
 # bashrc
-# michael cousins
-# march 22, 2014
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source private bash files (private in that they don't live in my github)
-if [[ -f ~/.bash_private ]]; then
-  source ~/.bash_private
-fi
+# source private bash files from my dropbox if they exist
+if [[ -f ~/.bash_private ]]; then . ~/.bash_private; fi
+
+# set aliases
+if [[ -f ~/.bash_aliases ]]; then . ~/.bash_aliases; fi
 
 # bash history control
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
 
-# os specific profiles
+# os specific path setting
 # mac
 if [[ $OSTYPE =~ "darwin" ]]; then
-  # Prepend /usr/local/bin first in my PATH for Homebrew
+  # put /usr/local/bin first in my PATH for Homebrew
   PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
   # bash completion scripts
   if [ -f `brew --prefix`/etc/bash_completion ]; then
-      . `brew --prefix`/etc/bash_completion
+    . `brew --prefix`/etc/bash_completion
   fi
-
   # help out atom
   export ATOM_PATH="${HOME}/Applications"
-  # sublime text command line alias
-  # alias subl='~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-  # make sure sublime text user settings are used
-  #ln -sf ~/.sublprefs ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
   # bash completion
-  if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+  if [ -f /etc/bash_completion ]; then . /etc/bash_completion; fi
 
   # include sbins and private bin in the PATH if directories exist
-  if [ -d "/sbin" ] ; then
-	 PATH="/sbin:$PATH"
-  fi
-  if [ -d "/usr/sbin" ] ; then
-    PATH="/usr/sbin:$PATH"
-  fi
-  if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-  fi
-
-  # include avr toolchain in path if it exists
-  if [ -d "$HOME/avr/bin" ] ; then
-	 PATH="$HOME/avr/bin:$PATH"
-  fi
-
-  # make sure sublime text user settings are used
-  ln -sf ~/.sublprefs ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
-
-# msys (windows)
-elif [[ $OSTYPE =~ "msys" ]]; then
-  # copy sublime text user settings
-  ln -sf ~/.sublprefs ~/AppData/Roaming/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
-fi
+  if [ -d "/sbin" ] ; then PATH="/sbin:$PATH"; fi
+  if [ -d "/usr/sbin" ] ; then PATH="/usr/sbin:$PATH"; fi
 
 # npm
 if which npm > /dev/null 2>&1; then
   # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
-  PATH=/usr/local/share/npm/bin:$PATH
-  PATH=./node_modules/.bin:$PATH
+  PATH=/usr/local/share/npm/bin:./node_modules/.bin:$PATH
 fi
 
 # ruby environment
@@ -76,45 +46,8 @@ if which rbenv > /dev/null 2>&1; then
   export PATH="./bin:$PATH"
 fi
 
-#pyton environment
+# python environment
 if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
-
-# git stuff
-if which hub > /dev/null 2>&1; then alias git='hub'; fi
-alias stat='git status'
-alias gc='git commit -m'
-alias gca='git commit -am'
-alias push='git push'
-alias pull='git pull'
-alias gd='git diff'
-alias gl='git log'
-
-# dotfiles
-alias brc='source ~/.bashrc'
-alias dots='~/dotfiles/linkdots'
-
-# list
-alias ls='ls -Glp'
-alias lsa='ls -Glpa'
-alias lsn='command ls'
-export LSCOLORS=GxFxCxDxBxegedabagaced
-
-# change directory and list files
-cl() {
-  if [[ -d $1 ]]; then
-    cd "$1"
-    ls
-  elif [[ $1 = '' ]]; then
-    cd ~
-    ls
-  else
-    echo "bash: cl: '$1': directory not found"
-  fi
-}
-
-# misc alias
-alias clr='clear'
-
 
 #Prompt and prompt colors
 # 30m - Black
