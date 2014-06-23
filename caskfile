@@ -25,7 +25,7 @@ cask install dashlane
 cask install bettertouchtool
 cask install bartender
 cask install iterm2
-cask install caskroom/versions/sublime-text3
+cask install atom
 cask install appcleaner
 cask install caffeine
 

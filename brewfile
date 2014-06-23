@@ -22,9 +22,11 @@ install rbenv-gem-rehash
 install node
 install heroku
 install postgresql
+install discount
 
 # avr development
 install avrdude
+install libftdi
 
 # give me some vnc
 install tiger-vnc
