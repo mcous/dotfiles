@@ -9,6 +9,10 @@ alias push='git push'
 alias pull='git pull'
 alias gd='git diff'
 alias gl='git log'
+alias gb='git branch'
+alias gch='git checkout'
+alias gchm='git checkout master'
+alias gchb='git checkout -b'
 
 # get new dotfiles and source bashrc
 alias brc='source ~/.bashrc'
