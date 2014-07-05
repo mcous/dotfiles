@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source private bash files from my dropbox if they exist
+# source private bash files if they exist
 if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
 
 # set aliases
@@ -55,6 +55,21 @@ fi
 # python environment
 if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
+# cronjobs
+# make sure this hasn't been run already (e.g. if bachrc has already been sourced)
+if test -z $CRONCMD; then
+  # get the crontab command
+  export CRONCMD=$(which crontab)
+  crontab() {
+    if [ "$@" = "-e" ]; then
+      vim ~/.cronjobs && $CRONCMD ~/.cronjobs
+    else
+      $CRONCMD $@
+    fi
+  }
+  $CRONCMD ~/.cronjobs
+fi
+
 #Prompt and prompt colors
 # 30m - Black
 # 31m - Red
@@ -66,7 +81,7 @@ if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 # 37m - White
 # 0 - Normal
 # 1 - Bold
-function prompt {
+prompt() {
   local BLACK="\[\033[0;30m\]"
   local BLACKBOLD="\[\033[1;30m\]"
   local RED="\[\033[0;31m\]"

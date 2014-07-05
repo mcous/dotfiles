@@ -7,5 +7,5 @@
 #  | +---------- Hour              (range: 0-23)
 #  +------------ Minute            (range: 0-59)
 
-# update homebrew every six hours
-*  0,6,12,18  *  *  *  *  test -x /usr/local/bin/brew && /usr/local/bin/brew update
+# update homebrew every six hours if it exists
+0  0,6,12,18  *  *  *  *  test -x /usr/local/bin/brew && /usr/local/bin/brew update
