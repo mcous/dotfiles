@@ -17,5 +17,5 @@
 #  @midnight  - (same as @daily)
 #  @hourly    - run once an hour, "0 * * * *".
 
-# update homebrew every six hours
-0  */6  *  *  *   ${HOME}/dotfiles/brewupdate
+# update homebrew every three hours
+0  */3  *  *  *   ${HOME}/dotfiles/brewupdate
