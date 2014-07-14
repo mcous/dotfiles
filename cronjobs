@@ -17,5 +17,5 @@
 #  @midnight  - (same as @daily)
 #  @hourly    - run once an hour, "0 * * * *".
 
-# update homebrew every six hours if it exists
-0  */6  *  *  *   test -x /usr/local/bin/brew && /usr/local/bin/brew update >/dev/null
+# update homebrew every six hours
+0  */6  *  *  *   ${HOME}/brewupdate
