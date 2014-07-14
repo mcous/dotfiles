@@ -1,0 +1,14 @@
+#!/bin/bash
+# homebrew update script to be run by chron and notify me if updates are available
+
+# if brew exists on this system
+if test -x /usr/local/bin/brew; then
+  # notification center
+  notifier=/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier
+  # update brew and find outdated packages
+  /usr/local/bin/brew update > /dev/null 2>&1
+  outdated=`/usr/local/bin/brew outdated | sort | tr '\n' ' '`
+  if [ ! -z "$outdated" ]; then
+    $notifier -group cosine.brewupdate -title "homebrew packages outdated" -message "$outdated"
+  fi
+fi
