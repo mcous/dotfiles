@@ -12,6 +12,10 @@ if test -x /usr/local/bin/brew; then
   fi
   outdated=`/usr/local/bin/brew outdated | sort | tr '\n' ' '`
   if [ ! -z "$outdated" ]; then
-    $notifier -group cosine.brewupdate -title "homebrew packages outdated" -message "$outdated"
+    $notifier \
+    -group cosine.brewupdate \
+    -title "homebrew packages outdated" \
+    -message "$outdated" \
+    >/dev/null
   fi
 fi
