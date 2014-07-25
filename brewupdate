@@ -6,16 +6,20 @@ if test -x /usr/local/bin/brew; then
   # notification center
   notifier=/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier
   # update brew and find outdated packages
-  updated=`/usr/local/bin/brew update | grep -i ^updated.*$`
+  updated=`/usr/local/bin/brew update 2>/dev/null | grep -i ^updated.*$`
   if [ ! -z "$updated" ]; then
-    $notifier -group cosine.brewupdate -title "homebrew updated" -message "$updated"
+    $notifier                 \
+    -group cosine.brewupdate  \
+    -title "homebrew updated" \
+    -message "$updated"       \
+    >/dev/null
   fi
-  outdated=`/usr/local/bin/brew outdated | sort | tr '\n' ' '`
+  outdated=`/usr/local/bin/brew outdated 2>/dev/null | sort | tr '\n' ' '`
   if [ ! -z "$outdated" ]; then
-    $notifier \
-    -group cosine.brewupdate \
+    $notifier                           \
+    -group cosine.brewupdate            \
     -title "homebrew packages outdated" \
-    -message "$outdated" \
+    -message "$outdated"                \
     >/dev/null
   fi
 fi
