@@ -40,11 +40,15 @@ elif [[ $OSTYPE =~ "linux" ]]; then
 # end OS if
 fi
 
-# npm
+# npm and js dev
 if which npm > /dev/null 2>&1; then
   # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
   PATH=/usr/local/share/npm/bin:./node_modules/.bin:$PATH
 fi
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
+# gulp bash completion (gulp must be installed globally to work)
+if which gulp > /dev/null 2>&1; then eval "$(gulp --completion=bash)"; fi
 
 # ruby environment
 if which rbenv > /dev/null 2>&1; then
