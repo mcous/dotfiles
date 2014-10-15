@@ -28,6 +28,9 @@ install discount
 install avrdude
 install libftdi
 
+# pcb work
+install gerbv
+
 # give me some vnc
 install tiger-vnc
 

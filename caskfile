@@ -15,11 +15,13 @@ cask alfred link
 
 # tubez and cloudz
 cask install caskroom/versions/google-chrome-beta
+cask install firefox
 cask install google-drive
 cask install transmission
 cask install evernote
 cask install dropbox
 cask install dashlane
+cask install mailbox
 
 # sanity
 cask install bettertouchtool
@@ -28,9 +30,13 @@ cask install iterm2
 cask install atom
 cask install appcleaner
 cask install caffeine
+cask install the-unarchiver
 
 # devtools
 cask install pg-commander
+
+# pcb work
+cask install eagle
 
 # entertaining myself
 cask install rdio
@@ -42,6 +48,10 @@ cask install gog-downloader
 cask install arduino
 cask install processing
 cask install fritzing
+
+# quicklooks
+cask install betterzipql
+cask install qlstephen
 
 # laptop with SSD
 cask install trim-enabler
