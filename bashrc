@@ -45,8 +45,10 @@ if which npm > /dev/null 2>&1; then
   # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
   PATH=/usr/local/share/npm/bin:./node_modules/.bin:$PATH
 fi
+
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && . ~/.travis/travis.sh
+
 # gulp bash completion (gulp must be installed globally to work)
 if which gulp > /dev/null 2>&1; then eval "$(gulp --completion=bash)"; fi
 
@@ -58,20 +60,25 @@ fi
 
 # python environment
 if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)";
+fi
 
 # cronjobs
-# make sure this hasn't been run already (e.g. if bachrc has already been sourced)
+# make sure this hasn't run already (e.g. if bachrc has already been sourced)
 if test -z $CRONCMD; then
   # get the crontab command
   export CRONCMD=$(which crontab)
-  crontab() {
-    if [ "$@" = "-e" ]; then
-      vim ~/.cronjobs && $CRONCMD ~/.cronjobs
-    else
-      $CRONCMD $@
-    fi
-  }
-  $CRONCMD ~/.cronjobs
+  if [ -n "$CRONCMD" ]; then
+    crontab() {
+      if [ "$@" = "-e" ]; then
+        vim ~/.cronjobs && $CRONCMD ~/.cronjobs
+      else
+        $CRONCMD $@
+      fi
+    }
+    $CRONCMD ~/.cronjobs
+  fi
 fi
 
 #Prompt and prompt colors

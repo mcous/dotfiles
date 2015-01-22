@@ -11,7 +11,7 @@ cask cleanup
 
 # development tools
 cask install xquartz
-cask install parallels
+cask install caskroom/versions/parallels9
 cask install virtualbox
 cask install crosspack-avr
 

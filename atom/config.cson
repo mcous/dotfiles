@@ -1,23 +1,24 @@
-'global':
-  'exception-reporting':
-    'userId': '2140a0ca-7024-e98e-2e3a-93ba7bc3d13b'
-  'release-notes':
-    'viewedVersion': '0.95.0'
-  'welcome':
-    'showOnStartup': false
-  'metrics':
-    'userId': '488f901c412cb5de43fde1d3a75b0c6a6f12b3d1'
-  'editor':
-    'fontSize': 12
-    'softWrap': true
-    'showIndentGuide': true
-    'fontFamily': 'Source Code Pro'
-    'invisibles': {}
-  'core':
-    'themes': [
-      'atom-dark-ui'
-      'solarized-dark-syntax'
+"*":
+  "exception-reporting":
+    userId: "2140a0ca-7024-e98e-2e3a-93ba7bc3d13b"
+  "release-notes":
+    viewedVersion: "0.95.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "488f901c412cb5de43fde1d3a75b0c6a6f12b3d1"
+  editor:
+    fontFamily: "Source Code Pro"
+    fontSize: 12
+    showIndentGuide: true
+    softWrap: true
+    invisibles: {}
+  core:
+    themes: [
+      "atom-dark-ui"
+      "solarized-dark-syntax"
     ]
-    'destroyEmptyPanes': false
-  'whitespace':
-    'removeTrailingWhitespace': false
+    destroyEmptyPanes: false
+  "git-diff":
+    showIconsInEditorGutter: true
+  linter: {}
