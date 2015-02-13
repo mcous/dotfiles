@@ -68,7 +68,7 @@ fi
 # make sure this hasn't run already (e.g. if bachrc has already been sourced)
 if test -z $CRONCMD; then
   # get the crontab command
-  export CRONCMD=$(which crontab)
+  export CRONCMD=$(which crontab 2>/dev/null)
   if [ -n "$CRONCMD" ]; then
     crontab() {
       if [ "$@" = "-e" ]; then

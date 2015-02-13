@@ -21,4 +21,5 @@
     destroyEmptyPanes: false
   "git-diff":
     showIconsInEditorGutter: true
-  linter: {}
+  linter:
+    statusBar: "None"
