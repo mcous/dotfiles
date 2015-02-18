@@ -1,12 +1,21 @@
 #!/bin/bash
-
 # michael cousins
 # shell script to link my dotfiles to my home directory
+
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
 
 # dotfile directories is this one
 DOTLOC=~/dotfiles
 # private dotfiles live in my dropbox
-PRIVDOTLOC=~/Dropbox/privatedots
+if [ -d "$HOME/Dropbox" ]; then
+  DROPBOX=~/Dropbox
+elif [ -d "$HOME/Dropbox (Personal)" ]; then
+  DROPBOX=~/Dropbox\ \(Personal\)
+else
+  DROPBOX="null"
+fi
+PRIVDOTLOC="$DROPBOX/privatedots"
 # place to backup old dotfiles
 DOTOLD=~/dotfiles_old
 # place to simlink new dotfiles into
@@ -29,7 +38,7 @@ for f in $DOTLOC/*; do
   fi
 done
 # gather any private dotfiles (if private dots directory exists)
-if [ -d $PRIVDOTLOC ]; then
+if [ -d "$PRIVDOTLOC" ]; then
   for f in $PRIVDOTLOC/*; do
     # exclude any files we want to exclude
     if [[ ! $f =~ $IGNORE ]]; then
@@ -103,3 +112,6 @@ for f in ${DOTS[@]}; do
     fi
   done
 done
+
+# restore $IFS
+IFS=$SAVEIFS
