@@ -43,3 +43,8 @@ cl() {
     echo "bash: cl: '$1': directory not found"
   fi
 }
+
+# make a directory and change to it
+mkcd() {
+  mkdir -p "$@" && cd "$_"
+}
