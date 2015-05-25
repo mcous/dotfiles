@@ -12,14 +12,30 @@
     fontSize: 12
     showIndentGuide: true
     softWrap: true
-    invisibles: {}
+    invisibles:
+      {}
   core:
     themes: [
       "atom-dark-ui"
       "solarized-dark-syntax"
     ]
     destroyEmptyPanes: false
+    disabledPackages: [
+      "linter-jshint"
+    ]
   "git-diff":
     showIconsInEditorGutter: true
   linter:
-    statusBar: "None"
+    statusBar: "Show error of the selected line"
+    lintOnChangeInterval: 2000
+    showErrorInline: false
+    showInfoMessages: true
+  "autocomplete-plus":
+    {}
+  "markdown-preview":
+    {}
+  "linter-jscs":
+    messageType: "warning"
+    verbose: true
+  "linter-jshint":
+    {}

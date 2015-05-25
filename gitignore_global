@@ -50,6 +50,7 @@ $*
 # Environments #
 ################
 *.env
+*.editorconfig
 
 # KiCad #
 #########

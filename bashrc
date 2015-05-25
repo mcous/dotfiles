@@ -16,6 +16,10 @@ export CDPATH=.:~:~/projects
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
 
+# bash settings
+# enable globstar if available
+shopt -s globstar
+
 # os specific path setting
 # mac
 if [[ $OSTYPE =~ "darwin" ]]; then
@@ -41,8 +45,13 @@ elif [[ $OSTYPE =~ "linux" ]]; then
 fi
 
 # npm and js dev
+# first, check if we're using nvm
+if [ -d "${HOME}/.nvm" ]; then
+  . ~/.nvm/nvm.sh;
+  [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+fi
+# prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
 if which npm > /dev/null 2>&1; then
-  # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
   PATH=/usr/local/share/npm/bin:./node_modules/.bin:$PATH
 fi
 
@@ -62,6 +71,14 @@ fi
 if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)";
+fi
+
+# go environment
+if which go > /dev/null 2>&1; then
+  export GOPATH=$HOME/golang
+  export GOROOT=/usr/local/opt/go/libexec
+  export PATH=$PATH:$GOPATH/bin
+  export PATH=$PATH:$GOROOT/bin
 fi
 
 # cronjobs
