@@ -1,0 +1,66 @@
+[
+  {
+    type: 'button'
+    icon: 'tree'
+    callback: 'tree-view:toggle'
+    tooltip: 'toggle tree view'
+    iconset: 'fa'
+  }
+
+  {
+    type: 'button'
+    icon: 'document'
+    callback: 'application:new-file'
+    tooltip: 'new file'
+    iconset: 'ion'
+  }
+
+  {
+    type: 'button'
+    icon: 'columns'
+    iconset: 'fa'
+    callback: 'pane:split-right'
+    tooltip: 'split pane right'
+  }
+
+  {
+    type: 'spacer'
+  }
+
+  {
+    type: 'button'
+    icon: 'octoface'
+    callback: 'open-on-github:repository'
+    tooltip: 'GitHub repository'
+    iconset: ''
+  }
+
+  {
+    type: 'button'
+    icon: 'issue-opened'
+    callback: 'open-on-github:issues'
+    tooltip: 'GitHub issues'
+    iconset: ''
+  }
+
+  {
+    type: 'button'
+    icon: 'flame'
+    callback: 'merge-conflicts:detect'
+    tooltip: 'detect merge conflicts'
+    iconset: ''
+  }
+
+  {
+    type: 'spacer'
+  }
+
+  {
+    type: 'button'
+    icon: 'markdown'
+    callback: 'markdown-preview:toggle'
+    disable: '!markdown'
+    tooltip: 'view markdown'
+  }
+
+]
