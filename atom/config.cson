@@ -13,17 +13,14 @@
     softWrap: true
     invisibles: {}
     lineHeight: 1.4
-    fontSize: 12
+    fontSize: 11
+    preferredLineLength: 100
   core:
     themes: [
       "atom-dark-ui"
       "solarized-dark-syntax"
     ]
     destroyEmptyPanes: true
-    disabledPackages: [
-      "linter-jshint"
-      "linter-jscs"
-    ]
   "git-diff":
     showIconsInEditorGutter: true
   linter:

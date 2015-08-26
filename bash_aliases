@@ -48,3 +48,9 @@ cl() {
 mkcd() {
   mkdir -p "$@" && cd "$_"
 }
+
+# http verbs with curl and json
+alias GET='curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET'
+POST() {
+  curl -i -H "Content-Type: application/json" -d $2 -X POST $1
+}

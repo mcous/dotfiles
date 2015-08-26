@@ -51,8 +51,10 @@ if [ -d "${HOME}/.nvm" ]; then
   [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 fi
 # prepend /usr/local/share/npm/bin and ./node_modules/.bin for npm
+# also source npm completion
 if which npm > /dev/null 2>&1; then
   PATH=/usr/local/share/npm/bin:./node_modules/.bin:$PATH
+  . <(npm completion)
 fi
 
 # added by travis gem
