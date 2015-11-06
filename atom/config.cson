@@ -17,8 +17,8 @@
     preferredLineLength: 100
   core:
     themes: [
-      "atom-dark-ui"
-      "solarized-dark-syntax"
+      "one-light-ui"
+      "solarized-light-syntax"
     ]
     destroyEmptyPanes: true
   "git-diff":
@@ -41,3 +41,16 @@
   "flex-tool-bar":
     toolBarConfigurationFilePath: "/Users/mc/.atom/toolbar.cson"
     showConfigButton: false
+  "language-babel":
+    disableWhenNoBabelrcFileInPath: true
+    transpileOnSave: false
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
+  "one-light-ui":
+    layoutMode: "Compact"
+".babel.regexp.source":
+  editor:
+    preferredLineLength: 100
+".js.jsx.source":
+  editor:
+    preferredLineLength: 100
