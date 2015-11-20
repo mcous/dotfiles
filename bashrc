@@ -41,6 +41,11 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   if [ -d "/sbin" ] ; then PATH="/sbin:$PATH"; fi
   if [ -d "/usr/sbin" ] ; then PATH="/usr/sbin:$PATH"; fi
 
+elif [[ $OSTYPE =~ "msys" ]]; then
+  # ensure ssh agent has started
+  eval `ssh-agent -s`
+  ssh-add
+
 # end OS if
 fi
 
