@@ -3,12 +3,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source private bash files if they exist
-if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
-
-# set aliases
-if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
-
 # cdpath for home directory and projects folder
 export CDPATH=.:~:~/projects
 
@@ -25,6 +19,7 @@ shopt -s globstar
 if [[ $OSTYPE =~ "darwin" ]]; then
   # put /usr/local/bin first in my PATH for Homebrew
   PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
+
   # bash completion scripts
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -40,6 +35,13 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   # include sbins and private bin in the PATH if directories exist
   if [ -d "/sbin" ] ; then PATH="/sbin:$PATH"; fi
   if [ -d "/usr/sbin" ] ; then PATH="/usr/sbin:$PATH"; fi
+
+  # linuxbrew in path if necessary
+  if [ -d "$HOME/.linuxbrew" ]; then
+    PATH="$HOME/.linuxbrew/bin:$PATH"
+    MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  fi
 
 elif [[ $OSTYPE =~ "msys" ]]; then
   # ensure ssh agent has started
@@ -87,6 +89,12 @@ if which go > /dev/null 2>&1; then
   export PATH=$PATH:$GOPATH/bin
   export PATH=$PATH:$GOROOT/bin
 fi
+
+# source private bash files if they exist
+if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
+
+# set aliases
+if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 # cronjobs
 # make sure this hasn't run already (e.g. if bachrc has already been sourced)
