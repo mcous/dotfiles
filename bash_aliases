@@ -54,3 +54,7 @@ alias GET='curl -i -H "Accept: application/json" -H "Content-Type: application/j
 POST() {
   curl -i -H "Content-Type: application/json" -d $2 -X POST $1
 }
+
+# linux pbcopy and pbpaste
+command -v pbcopy >/dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
+command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
