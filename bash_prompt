@@ -29,6 +29,6 @@ prompt() {
   local RESET="\[\033[00m\]"
 
   export GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1="\n$BLACKBOLD[\t] $PURPLE\u$RESET in$PURPLEBOLD\$(__git_ps1)$RESET \w\n \\$ "
+  export PS1="\n$BLACKBOLD[\t] $PURPLE\u$RESET at $BLUEBOLD\H$RESET in$PURPLEBOLD\$(__git_ps1)$RESET \w"$'\n $ '
 }
 prompt

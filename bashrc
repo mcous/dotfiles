@@ -14,6 +14,9 @@ export PROMPT_COMMAND='history -a'
 # enable globstar if available
 shopt -s globstar
 
+# vi mode
+set -o vi
+
 # os specific path setting
 # mac
 if [[ $OSTYPE =~ "darwin" ]]; then
