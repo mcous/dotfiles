@@ -1,23 +1,17 @@
-# gitconfig
-# michael cousins
-# july 8, 2013
-
 # private configuration files
 [include]
 	path = ~/.git_user
 
-# use vim (fuck nano)
+# use vim, deal with line endings, and use global gitignores
 [core]
-    editor = vim
+  editor = "atom --wait"
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
 
-# color my shit
+# color my stuff
 [color]
 	ui = true
 
 # simple push to suppress warnings
 [push]
 	default = simple
-
-# global gitignore
-[core]
-	excludesfile = ~/.gitignore_global

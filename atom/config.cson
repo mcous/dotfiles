@@ -1,53 +1,57 @@
 "*":
-  "exception-reporting":
-    userId: "2140a0ca-7024-e98e-2e3a-93ba7bc3d13b"
-  "release-notes":
-    viewedVersion: "0.95.0"
-  welcome:
-    showOnStartup: false
-  metrics:
-    userId: "488f901c412cb5de43fde1d3a75b0c6a6f12b3d1"
-  editor:
-    fontFamily: "Source Code Pro"
-    showIndentGuide: true
-    softWrap: true
-    invisibles: {}
-    lineHeight: 1.4
-    fontSize: 11
-    preferredLineLength: 100
+  Ensime:
+    sbtExec: "/usr/local/bin/sbt"
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+    defaultProvider: "Fuzzy"
+    enableAutoConfirmSingleSuggestion: false
   core:
+    destroyEmptyPanes: true
     themes: [
       "one-light-ui"
       "solarized-light-syntax"
     ]
-    destroyEmptyPanes: true
+  editor:
+    fontFamily: "Source Code Pro"
+    fontSize: 12
+    invisibles: {}
+    lineHeight: 1.4
+    preferredLineLength: 100
+    showIndentGuide: true
+    softWrap: true
+  "exception-reporting":
+    userId: "2140a0ca-7024-e98e-2e3a-93ba7bc3d13b"
+  "flex-tool-bar":
+    showConfigButton: false
+    toolBarConfigurationFilePath: "/Users/mc/.atom/toolbar.cson"
   "git-diff":
     showIconsInEditorGutter: true
+  "language-babel":
+    disableWhenNoBabelrcFileInPath: true
+    transpileOnSave: false
   linter:
-    statusBar: "Show error of the selected line"
     lintOnChangeInterval: 2000
     showErrorInline: false
     showInfoMessages: true
-  "autocomplete-plus":
-    confirmCompletion: "tab"
-  "markdown-preview": {}
+    statusBar: "Show error of the selected line"
+  "linter-eslint":
+    disableWhenNoEslintrcFileInPath: true
   "linter-jscs":
     messageType: "warning"
     verbose: true
   "linter-jshint": {}
+  "markdown-preview": {}
+  metrics:
+    userId: "488f901c412cb5de43fde1d3a75b0c6a6f12b3d1"
+  "one-light-ui":
+    layoutMode: "Compact"
+  "release-notes":
+    viewedVersion: "0.95.0"
   "tool-bar":
     iconSize: "16px"
     position: "Left"
-  "flex-tool-bar":
-    toolBarConfigurationFilePath: "/Users/mc/.atom/toolbar.cson"
-    showConfigButton: false
-  "language-babel":
-    disableWhenNoBabelrcFileInPath: true
-    transpileOnSave: false
-  "linter-eslint":
-    disableWhenNoEslintrcFileInPath: true
-  "one-light-ui":
-    layoutMode: "Compact"
+  welcome:
+    showOnStartup: false
 ".babel.regexp.source":
   editor:
     preferredLineLength: 100

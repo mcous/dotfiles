@@ -14,6 +14,26 @@ alias gch='git checkout'
 alias gchm='git checkout master'
 alias gchb='git checkout -b'
 
+# docker
+alias h=history
+alias d="docker"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias di="docker images"
+alias dk="docker kill"
+alias drm="docker rm"
+alias drmi="docker rmi"
+alias dl="docker logs"
+alias dlf="docker logs -f"
+
+function drmia() {
+	docker rmi $(docker images -q)
+}
+
+function drma() {
+	docker rm $(docker ps -a -q)
+}
+
 # get new dotfiles and source bashrc
 alias brc='source ~/.bashrc'
 alias dots='~/dotfiles/linkdots'
@@ -30,6 +50,9 @@ alias cpn='command cp'
 
 # clear the terminal
 alias clr='clear'
+
+# search history for a thing
+alias hisg='history | grep'
 
 # change directory and list files
 cl() {
@@ -54,3 +77,7 @@ alias GET='curl -i -H "Accept: application/json" -H "Content-Type: application/j
 POST() {
   curl -i -H "Content-Type: application/json" -d $2 -X POST $1
 }
+
+# linux pbcopy and pbpaste
+command -v pbcopy >/dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
+command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
