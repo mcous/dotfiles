@@ -3,12 +3,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# source private bash files if they exist
-if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
-
-# set aliases
-if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
-
 # cdpath for home directory and projects folder
 export CDPATH=.:~:~/projects
 
@@ -40,6 +34,11 @@ elif [[ $OSTYPE =~ "linux" ]]; then
   # include sbins and private bin in the PATH if directories exist
   if [ -d "/sbin" ] ; then PATH="/sbin:$PATH"; fi
   if [ -d "/usr/sbin" ] ; then PATH="/usr/sbin:$PATH"; fi
+
+  # linuxbrew path
+  export PATH="$HOME/.linuxbrew/bin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 # end OS if
 fi
@@ -82,6 +81,12 @@ if which go > /dev/null 2>&1; then
   export PATH=$PATH:$GOPATH/bin
   export PATH=$PATH:$GOROOT/bin
 fi
+
+# source private bash files if they exist
+if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
+
+# set aliases
+if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 # cronjobs
 # make sure this hasn't run already (e.g. if bachrc has already been sourced)
