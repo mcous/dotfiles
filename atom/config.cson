@@ -5,8 +5,15 @@
     confirmCompletion: "tab"
     defaultProvider: "Fuzzy"
     enableAutoConfirmSingleSuggestion: false
+  "browser-plus": {}
   core:
+    allowPendingPaneItems: false
     destroyEmptyPanes: true
+    disabledPackages: [
+      "vim-mode"
+      "ex-mode"
+      "Ensime"
+    ]
     themes: [
       "one-light-ui"
       "solarized-light-syntax"
@@ -50,6 +57,8 @@
   "tool-bar":
     iconSize: "16px"
     position: "Left"
+  "tree-view":
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
 ".babel.regexp.source":

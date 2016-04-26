@@ -118,3 +118,4 @@ fi
 
 # set prompt
 . ~/.bash_prompt
+eval "$(thefuck --alias)"

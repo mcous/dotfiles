@@ -7,12 +7,15 @@ alias gc='git commit -m'
 alias gca='git commit -am'
 alias push='git push'
 alias pull='git pull'
-alias gd='git diff'
 alias gl='git log'
 alias gb='git branch'
 alias gch='git checkout'
 alias gchm='git checkout master'
 alias gchb='git checkout -b'
+
+function gd() {
+	git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX
+}
 
 # docker
 alias h=history
@@ -33,6 +36,14 @@ function drmia() {
 function drma() {
 	docker rm $(docker ps -a -q)
 }
+
+
+function dmenv() {
+	eval $(docker-machine env default)
+}
+
+alias dmls="docker-machine ls"
+alias dmstart="docker-machine start default && dmenv"
 
 # get new dotfiles and source bashrc
 alias brc='source ~/.bashrc'

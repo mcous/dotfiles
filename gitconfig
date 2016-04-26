@@ -4,7 +4,7 @@
 
 # use vim, deal with line endings, and use global gitignores
 [core]
-  editor = "atom --wait"
+  editor = vim
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
 
