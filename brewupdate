@@ -4,7 +4,7 @@
 # if brew exists on this system
 if test -x /usr/local/bin/brew; then
   # notification center
-  notifier=/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier
+  notifier=/usr/local/bin/terminal-notifier
   # update brew and find outdated packages
   updated=`/usr/local/bin/brew update 2>/dev/null | grep -i ^updated.*$`
   if [ ! -z "$updated" ]; then

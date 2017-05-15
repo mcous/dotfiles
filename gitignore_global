@@ -27,6 +27,7 @@
 *.log
 *.sql
 *.sqlite
+*.rdb
 
 # backups and temps #
 #####################

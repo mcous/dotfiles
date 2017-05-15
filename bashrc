@@ -1,5 +1,7 @@
 # bashrc
 
+shopt -s globstar
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -7,6 +9,9 @@
 export CDPATH=.:~:~/projects
 
 # bash history control
+export HISTFILESIZE=-1
+export HISTSIZE=-1
+export HISTTIMEFORMAT="[%F %T] "
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND='history -a'
 
@@ -14,14 +19,16 @@ export PROMPT_COMMAND='history -a'
 # enable globstar if available
 shopt -s globstar
 
-# vi mode
+# vi(m) plz
 set -o vi
+export EDITOR=vim
 
 # os specific path setting
 # mac
 if [[ $OSTYPE =~ "darwin" ]]; then
-  # put /usr/local/bin first in my PATH for Homebrew
+  # setup PATH and options for homebrew
   PATH=/usr/local/bin:`echo $PATH | sed 's/\/usr\/local\/bin://'`
+  export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
   # bash completion scripts
   if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -93,6 +100,14 @@ if which go > /dev/null 2>&1; then
   export PATH=$PATH:$GOROOT/bin
 fi
 
+# shopify theme editor
+if [ -d "${HOME}/.themekit" ]; then
+  export PATH=/Users/mc/.themekit:$PATH
+fi
+
+# halp
+if which thefuck > /dev/null 2>&1; then eval "$(thefuck --alias)"; fi
+
 # source private bash files if they exist
 if [ -f ~/.bash_private ]; then . ~/.bash_private; fi
 
@@ -118,4 +133,3 @@ fi
 
 # set prompt
 . ~/.bash_prompt
-eval "$(thefuck --alias)"

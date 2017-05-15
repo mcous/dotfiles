@@ -2,6 +2,3 @@ do_not_link
 README.md
 deploy
 brewupdate
-brewfile
-caskfile
-caskfile_pkg

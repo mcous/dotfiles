@@ -6,7 +6,6 @@
     tooltip: 'toggle tree view'
     iconset: 'fa'
   }
-
   {
     type: 'button'
     icon: 'document'
@@ -14,7 +13,6 @@
     tooltip: 'new file'
     iconset: 'ion'
   }
-
   {
     type: 'button'
     icon: 'columns'
@@ -22,45 +20,54 @@
     callback: 'pane:split-right'
     tooltip: 'split pane right'
   }
-
   {
     type: 'spacer'
   }
-
   {
     type: 'button'
     icon: 'octoface'
+    iconset: ''
     callback: 'open-on-github:repository'
     tooltip: 'GitHub repository'
-    iconset: ''
   }
-
   {
     type: 'button'
     icon: 'issue-opened'
+    iconset: ''
     callback: 'open-on-github:issues'
     tooltip: 'GitHub issues'
-    iconset: ''
   }
-
   {
     type: 'button'
     icon: 'flame'
     callback: 'merge-conflicts:detect'
     tooltip: 'detect merge conflicts'
-    iconset: ''
   }
-
   {
     type: 'spacer'
   }
-
   {
     type: 'button'
     icon: 'markdown'
+    iconset: ''
     callback: 'markdown-preview:toggle'
     disable: '!markdown'
     tooltip: 'view markdown'
   }
-
+  {
+    type: 'spacer'
+  }
+  {
+    type: 'button'
+    icon: 'refresh'
+    iconset: 'ion'
+    callback: 'window:reload'
+    tooltip: 'reload window'
+  }
+  {
+    type: 'button'
+    icon: 'tools'
+    callback: 'window:toggle-dev-tools'
+    tooltip: 'toggle dev tools'
+  }
 ]

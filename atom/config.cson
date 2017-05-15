@@ -1,6 +1,11 @@
 "*":
   Ensime:
     sbtExec: "/usr/local/bin/sbt"
+  "atom-beautify":
+    general:
+      _analyticsUserId: "b38fa3b2-f623-4424-b75b-627b44e01907"
+    json:
+      indent_size: 2
   "autocomplete-plus":
     confirmCompletion: "tab"
     defaultProvider: "Fuzzy"
@@ -10,21 +15,23 @@
     allowPendingPaneItems: false
     destroyEmptyPanes: true
     disabledPackages: [
-      "vim-mode"
       "ex-mode"
-      "Ensime"
+      "language-gfm"
     ]
+    projectHome: "/Users/mc/projects"
+    telemetryConsent: "limited"
     themes: [
       "one-light-ui"
       "solarized-light-syntax"
     ]
   editor:
     fontFamily: "Source Code Pro"
-    fontSize: 12
+    fontSize: 11
     invisibles: {}
     lineHeight: 1.4
     preferredLineLength: 100
     showIndentGuide: true
+    showInvisibles: true
     softWrap: true
   "exception-reporting":
     userId: "2140a0ca-7024-e98e-2e3a-93ba7bc3d13b"
@@ -36,18 +43,31 @@
   "language-babel":
     disableWhenNoBabelrcFileInPath: true
     transpileOnSave: false
+  "language-markdown":
+    addListItems: false
   linter:
     lintOnChangeInterval: 2000
-    showErrorInline: false
     showInfoMessages: true
     statusBar: "Show error of the selected line"
   "linter-eslint":
     disableWhenNoEslintrcFileInPath: true
+  "linter-js-standard":
+    checkStyleDevDependencies: true
+    lintMarkdownFiles: true
   "linter-jscs":
     messageType: "warning"
     verbose: true
   "linter-jshint": {}
+  "linter-pug":
+    onlyRunWhenConfig: true
+  "linter-scalastyle":
+    scalastyleExecutablePath: "java -jar scalastyle-batch_2.10.jar"
+  "linter-ui-default":
+    showPanel: true
   "markdown-preview": {}
+  "markdown-preview-enhanced":
+    openPreviewPaneAutomatically: false
+    printBackground: false
   metrics:
     userId: "488f901c412cb5de43fde1d3a75b0c6a6f12b3d1"
   "one-light-ui":
@@ -61,9 +81,14 @@
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
 ".babel.regexp.source":
   editor:
     preferredLineLength: 100
 ".js.jsx.source":
   editor:
     preferredLineLength: 100
+".md.text":
+  whitespace:
+    removeTrailingWhitespace: false

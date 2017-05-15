@@ -2,23 +2,40 @@
 
 # alias hub to git if it exists, and also add some git aliases
 if which hub > /dev/null 2>&1; then alias git='hub'; fi
-alias stat='git status'
+alias gs='git status'
 alias gc='git commit -m'
 alias gca='git commit -am'
+
 alias push='git push'
+__git_complete push _git_push
+
 alias pull='git pull'
+__git_complete pull _git_pull
+
 alias gl='git log'
+__git_complete gl _git_log
+
 alias gb='git branch'
+alias gbd='git branch'
+__git_complete gb _git_branch
+__git_complete gbd _git_branch
+
 alias gch='git checkout'
 alias gchm='git checkout master'
 alias gchb='git checkout -b'
+__git_complete gch _git_checkout
+__git_complete gchb _git_checkout
 
 function gd() {
 	git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX
 }
 
+# history
+alias h='history'
+alias hoff='set +o history'
+alias hon='set -o history'
+
 # docker
-alias h=history
 alias d="docker"
 alias dps="docker ps"
 alias dpsa="docker ps -a"
@@ -65,6 +82,9 @@ alias clr='clear'
 # search history for a thing
 alias hisg='history | grep'
 
+# search process for a thing
+alias psg='ps -ax | grep'
+
 # change directory and list files
 cl() {
   if [ -d "$1" ]; then
@@ -92,3 +112,7 @@ POST() {
 # linux pbcopy and pbpaste
 command -v pbcopy >/dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
 command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
+
+# utc time
+alias utc='echo -n `date -u +"%Y-%m-%dT%H:%M:%SZ"` | tee >(pbcopy)'
+alias utcm='echo -n `date -u +"%Y-%m-%dT%H:%M:%S.000Z"` | tee >(pbcopy)'
