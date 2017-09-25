@@ -1,6 +1,4 @@
 "*":
-  Ensime:
-    sbtExec: "/usr/local/bin/sbt"
   "atom-beautify":
     general:
       _analyticsUserId: "b38fa3b2-f623-4424-b75b-627b44e01907"
@@ -13,6 +11,7 @@
   "browser-plus": {}
   core:
     allowPendingPaneItems: false
+    audioBeep: false
     destroyEmptyPanes: true
     disabledPackages: [
       "ex-mode"
@@ -29,7 +28,6 @@
     fontSize: 11
     invisibles: {}
     lineHeight: 1.4
-    preferredLineLength: 100
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
@@ -53,6 +51,7 @@
     disableWhenNoEslintrcFileInPath: true
   "linter-js-standard":
     checkStyleDevDependencies: true
+    lintHtmlFiles: true
     lintMarkdownFiles: true
   "linter-jscs":
     messageType: "warning"
@@ -63,6 +62,7 @@
   "linter-scalastyle":
     scalastyleExecutablePath: "java -jar scalastyle-batch_2.10.jar"
   "linter-ui-default":
+    panelHeight: 69
     showPanel: true
   "markdown-preview": {}
   "markdown-preview-enhanced":
@@ -70,8 +70,7 @@
     printBackground: false
   metrics:
     userId: "488f901c412cb5de43fde1d3a75b0c6a6f12b3d1"
-  "one-light-ui":
-    layoutMode: "Compact"
+  "one-light-ui": {}
   "release-notes":
     viewedVersion: "0.95.0"
   "tool-bar":
@@ -83,12 +82,6 @@
     showOnStartup: false
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
-".babel.regexp.source":
-  editor:
-    preferredLineLength: 100
-".js.jsx.source":
-  editor:
-    preferredLineLength: 100
 ".md.text":
   whitespace:
     removeTrailingWhitespace: false
