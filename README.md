@@ -1,20 +1,36 @@
 # dotfiles
 
-My dotfiles for OSX, Linux, and Windows, as well as my system setup for OSX.
+My dotfiles for macOS and Linux
 
 ## dotfile usage
 
 To start using these dotfiles, open a terminal and:
 
-1. `$ git clone mcous/dotfiles` (if you have [hub](https://hub.github.com) installed)
-2. `$ chmod +x dotfiles/linkdots` 
-3. `$ dotfiles/linkdots`
+```shell
+$ dotfiles/link
+```
 
-### what linkdots does
+### link script
 
-The `linkdots` script:
+The `link` script symlinks every file (recursively) in `$HOME/dotfiles/*` that [isn't blacklisted][blacklist] or according to the following scheme:
 
-1. Finds every file in `dotfiles` and `dotfiles/one-level-down` that isn't the `linkdots` script, and isn't listed in `do_not_link`
-2. Does the same thing in `~/Dropbox/privatedots` if it exists
-3. Backs up any matching, non-symlink dotfiles it finds to `~` to `~/dotfiles_old`
-4. Symlinks the `files` to `~/.files` and the `directory/files` to `~/.directory/files`
+* Files at `$HOME/dotfiles/filename`
+
+```shell
+ln -sf "$HOME/dotfiles/filename" "$HOME/.filename"
+```
+
+* Files at `$HOME/dotfiles/path/to/filename`
+
+```shell
+ln -sf "$HOME/dotfiles/path/to/filename" "$HOME/.path/to/filename"
+```
+
+It also does the same for `$HOME/dropbox/dotfiles/*`. It will try to prompt you before overwriting any non-symlink files.
+
+## license
+
+This code is released into the [public domain][unlicense]
+
+[blacklist]: ./link#L9
+[unlicense]: https://unlicense.org/

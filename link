@@ -1,0 +1,72 @@
+#!/bin/bash
+# script to link my dotfiles to my home directory
+
+# locations of dotfiles
+DOTFILE_PATH="$HOME/dotfiles"
+PRIVATE_DOTFILE_PATH="$HOME/dropbox/dotfiles"
+
+# files to avoid linking
+NO_LINK=(
+  "$DOTFILE_PATH/link"
+  "$DOTFILE_PATH/brewupdate"
+  "$DOTFILE_PATH/README.md"
+  "$DOTFILE_PATH/UNLICENSE"
+)
+
+# function to test that a file shouldn't be linked
+should_not_link () {
+  for element in ${NO_LINK[@]}; do [[ $element = "$1" ]] && return 0; done
+  return 1
+}
+
+ok_to_link () {
+  local target=$1
+
+  if [ -f $target ] && [ ! -L $target ]; then
+    echo -n "$target already exists; ok to overwrite (yN)? "
+    read answer
+    if echo "$answer" | grep -iq "^y"; then
+      return 0
+    fi
+
+    return 1
+  fi
+
+  return 0
+}
+
+link () {
+  echo "mkdir -p $(dirname $2) && ln -sf $1 $2"
+  mkdir -p $(dirname $2) && ln -sf $1 $2
+}
+
+link_if_ok () {
+  local target=$1
+
+  if should_not_link $target; then
+    echo "not linking $target because it is listed in $NO_LINK"
+    return 0
+  fi
+
+  local source_directory=$2
+  local dotfile="$HOME/.${target#$source_directory/}"
+
+  ok_to_link $dotfile && link $target $dotfile
+}
+
+link_files_in_dir () {
+  local directory=$1
+  local source_directory=${2-$directory}
+  local files="$directory/*"
+
+  for target in $files; do
+    if [[ -d "$target" ]]; then
+      link_files_in_dir $target $source_directory
+    else
+      link_if_ok $target $source_directory
+    fi
+  done
+}
+
+[[ -d "$DOTFILE_PATH" ]]         && link_files_in_dir $DOTFILE_PATH
+[[ -d "$PRIVATE_DOTFILE_PATH" ]] && link_files_in_dir $PRIVATE_DOTFILE_PATH

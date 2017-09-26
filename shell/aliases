@@ -1,0 +1,17 @@
+# custom shell aliases
+
+# make a directory and change to it
+mkcd() {
+  mkdir -p "$@" && cd "$_"
+}
+
+# linux pbcopy and pbpaste
+command -v pbcopy >/dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
+command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
+
+# utc time
+alias utc='echo -n `date -u +"%Y-%m-%dT%H:%M:%SZ"` | tee >(pbcopy)'
+alias utcm='echo -n `date -u +"%Y-%m-%dT%H:%M:%S.000Z"` | tee >(pbcopy)'
+
+# atom
+alias a='atom .'

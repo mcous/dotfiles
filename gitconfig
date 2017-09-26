@@ -1,10 +1,11 @@
-# private configuration files
-[include]
-	path = ~/.git_user
+# hello everyone, my name is mike
+[user]
+	name = Mike Cousins
+	email = mike@cousins.io
 
 # use vim, deal with line endings, and use global gitignores
 [core]
-  editor = vim
+	editor = vim
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
 
