@@ -18,4 +18,4 @@
 #  @hourly    - run once an hour, "0 * * * *".
 
 # update homebrew every three hours
-0  */3  *  *  *   ${HOME}/dotfiles/brewupdate
+0  */3  *  *  *   ${HOME}/.scripts/brew-update
