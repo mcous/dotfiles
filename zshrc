@@ -4,6 +4,8 @@ ANTIGEN_PATH="/usr/local/share/antigen"
 
 SHELL_PATH="$HOME/.shell"
 
+LOCAL_PLUGINS_PATH="$SHELL_PATH/zsh"
+
 OSX_APPLICATION_PATH="$HOME/Applications"
 
 LINUX_BREW_PATH="$HOME/.linuxbrew"
@@ -38,6 +40,7 @@ if [[ -d "$ANTIGEN_PATH" ]]; then
 
   antigen use oh-my-zsh
 
+  antigen bundle $LOCAL_PLUGINS_PATH
   antigen bundle brew
   antigen bundle common-aliases
   antigen bundle docker
@@ -47,8 +50,8 @@ if [[ -d "$ANTIGEN_PATH" ]]; then
   antigen bundle node
   antigen bundle npm
   antigen bundle nvm
-  antigen bundle pyenv
   antigen bundle osx
+  antigen bundle rust-lang/zsh-config
   antigen bundle zsh-users/zsh-syntax-highlighting
 
   antigen theme $ZSH_THEME
