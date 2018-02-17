@@ -1,19 +1,18 @@
 #!/bin/bash
-# script to link my dotfiles to my home directory
+# link dotfiles into the home directory
+# note about directories: rather than simply
 
-# locations of dotfiles
+# dotfiles locations
 DOTFILE_PATH="$HOME/dotfiles"
 PRIVATE_DOTFILE_PATH="$HOME/dropbox/dotfiles"
 
-# files to avoid linking
+# linking blacklist
 NO_LINK=(
-  "$DOTFILE_PATH/link"
-  "$DOTFILE_PATH/brewupdate"
   "$DOTFILE_PATH/README.md"
   "$DOTFILE_PATH/UNLICENSE"
 )
 
-# function to test that a file shouldn't be linked
+
 should_not_link () {
   for element in ${NO_LINK[@]}; do [[ $element = "$1" ]] && return 0; done
   return 1
