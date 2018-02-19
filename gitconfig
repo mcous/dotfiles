@@ -16,3 +16,7 @@
 # simple push to suppress warnings
 [push]
 	default = simple
+
+# pager settings
+[pager]
+	branch = false
