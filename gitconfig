@@ -20,3 +20,4 @@
 # pager settings
 [pager]
 	branch = false
+	stash = false

@@ -58,3 +58,7 @@ $*
 *.net
 *.kicad_pcb-bak
 _autosave*
+
+# python #
+##########
+.ropeproject
