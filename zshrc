@@ -6,7 +6,7 @@ SHELL_PATH="$HOME/.shell"
 
 LOCAL_PLUGINS_PATH="$SHELL_PATH/zsh"
 
-OSX_APPLICATION_PATH="$HOME/Applications"
+OSX_APPLICATION_PATH="/Applications"
 
 LINUX_BREW_PATH="$HOME/.linuxbrew"
 
@@ -17,10 +17,13 @@ ZSH_THEME=steeef
 export CDPATH=.:$HOME:$PROJECTS_PATH
 export EDITOR=vim
 export HISTTIMEFORMAT="[%F %T] "
+
+# auto_cd is annoying; turn it off
+unsetopt AUTO_CD
+
 # os specific settings
 if [[ $OSTYPE =~ "darwin" ]]; then
   export HOMEBREW_CASK_OPTS="--appdir=$OSX_APPLICATION_PATH"
-  export ATOM_PATH="$OSX_APPLICATION_PATH"
 
 # linux
 elif [[ $OSTYPE =~ "linux" ]]; then
@@ -59,7 +62,7 @@ if [[ -d "$ANTIGEN_PATH" ]]; then
   antigen apply
 fi
 
-# # source private shell file if it exists
+# source private shell file if it exists
 if [[ -f "$SHELL_PATH/private" ]]; then source "$SHELL_PATH/private"; fi
 
 # set aliases
