@@ -13,9 +13,6 @@ command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard 
 alias utc='echo -n `date -u +"%Y-%m-%dT%H:%M:%SZ"` | tee >(pbcopy) && echo'
 alias utcm='echo -n `date -u +"%Y-%m-%dT%H:%M:%S.000Z"` | tee >(pbcopy) && echo'
 
-# atom
-alias a='atom .'
-
 # make
 alias mk=make
 alias mkc='make -C'
