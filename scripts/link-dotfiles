@@ -3,7 +3,7 @@
 # note about directories: rather than simply
 
 # dotfiles locations
-DOTFILE_PATH="$HOME/dotfiles"
+DOTFILE_PATH="$HOME/projects/dotfiles"
 PRIVATE_DOTFILE_PATH="$HOME/dropbox/dotfiles"
 
 # linking blacklist

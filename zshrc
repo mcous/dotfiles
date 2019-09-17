@@ -1,6 +1,7 @@
 # zshell config
 
 ANTIGEN_PATH="/usr/local/share/antigen"
+ZGEN_PATH="$HOME/.zgen"
 
 SHELL_PATH="$HOME/.shell"
 
@@ -37,29 +38,24 @@ elif [[ $OSTYPE =~ "linux" ]]; then
 # end os if
 fi
 
-# antigen
-if [[ -d "$ANTIGEN_PATH" ]]; then
-  source "$ANTIGEN_PATH/antigen.zsh"
+if [[ -d "$ZGEN_PATH" ]]; then
+  source "$ZGEN_PATH/zgen.zsh"
 
-  antigen use oh-my-zsh
+  if ! zgen saved; then
+    zgen oh-my-zsh
+    zgen oh-my-zsh plugins/brew
+    zgen oh-my-zsh plugins/common-aliases
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/github
+    zgen oh-my-zsh plugins/history
 
-  antigen bundle $LOCAL_PLUGINS_PATH
-  antigen bundle brew
-  antigen bundle common-aliases
-  antigen bundle docker
-  antigen bundle git
-  antigen bundle github
-  antigen bundle history
-  antigen bundle node
-  antigen bundle npm
-  antigen bundle nvm
-  antigen bundle osx
-  antigen bundle rust-lang/zsh-config
-  antigen bundle zsh-users/zsh-syntax-highlighting
+    zgen load $LOCAL_PLUGINS_PATH
+    zgen load rust-lang/zsh-config
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-autosuggestions
 
-  antigen theme $ZSH_THEME
-
-  antigen apply
+    zgen save
+  fi
 fi
 
 # source private shell file if it exists
@@ -68,19 +64,6 @@ if [[ -f "$SHELL_PATH/private" ]]; then source "$SHELL_PATH/private"; fi
 # set aliases
 if [[ -f "$SHELL_PATH/aliases" ]]; then source "$SHELL_PATH/aliases"; fi
 
-# cronjobs
-# make sure this hasn't run already
-if test -z $CRONCMD; then
-  # get the crontab command
-  export CRONCMD=$(which crontab 2>/dev/null)
-  if [ -n "$CRONCMD" ]; then
-    crontab () {
-      if [ "$@" = "-e" ]; then
-        vim "$SHELL_PATH/cron" && $CRONCMD "$SHELL_PATH/cron"
-      else
-        $CRONCMD $@
-      fi
-    }
-    $CRONCMD "$SHELL_PATH/cron"
-  fi
-fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
