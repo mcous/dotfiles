@@ -38,13 +38,6 @@ if [[ -d "$ZGEN_PATH" ]]; then
 
   if ! zgen saved; then
     zgen load mcous/dotfiles shell/zsh zgen
-
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/common-aliases
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/github
-    zgen oh-my-zsh plugins/history
     zgen load rust-lang/zsh-config
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-autosuggestions

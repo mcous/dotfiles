@@ -1,30 +1,47 @@
 # custom shell aliases
+# many copied from oh-my-zsh
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 
 # make a directory and change to it
 mkcd() {
   mkdir -p "$@" && cd "$_"
 }
 
-# linux pbcopy and pbpaste
-command -v pbcopy >/dev/null 2>&1 || alias pbcopy='xclip -selection clipboard'
-command -v pbpaste >/dev/null 2>&1 || alias pbpaste='xclip -selection clipboard -o'
-
 # utc time
 alias utc='echo -n `date -u +"%Y-%m-%dT%H:%M:%SZ"` | tee >(pbcopy) && echo'
 alias utcm='echo -n `date -u +"%Y-%m-%dT%H:%M:%S.000Z"` | tee >(pbcopy) && echo'
 
-# make
-alias mk=make
-alias mkc='make -C'
-alias mkj='make -j'
 
-# git + hub
-ghbi() { hub browse -- issues/$1 }
-ghbp() { hub browse -- pulls/$1 }
-ghbm() { hub browse -- milestones/$1 }
-alias ghrr='ghbp review-requested/mcous'
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ll='ls -l'      #long list
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
 
-# npm
-nr() {
-  npm run $1 -- ${@:2}
-}
+alias grep='grep --color'
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+
+alias t='tail -f'
+
+# Command line head / tail shortcuts
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+alias h='history'
+alias hgrep="fc -El 0 | grep"
+alias p='ps -f'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
