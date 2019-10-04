@@ -42,6 +42,3 @@ alias h='history'
 alias hgrep="fc -El 0 | grep"
 alias p='ps -f'
 
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
