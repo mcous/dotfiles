@@ -48,7 +48,7 @@ alias gcmsg='git commit -m'
 
 alias gco='git checkout'
 alias gcb='git checkout -b'
-alias gcm='git checkout master'
+alias gcm='git checkout main'
 alias gcd='git checkout develop'
 
 alias gd='git diff'
