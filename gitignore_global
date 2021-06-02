@@ -61,6 +61,8 @@ _autosave*
 # python #
 ##########
 .ropeproject
+.mypy_cache/**
+.pytest_cache
 
 # vscode #
 ##########

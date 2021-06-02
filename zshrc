@@ -17,6 +17,10 @@ export HISTTIMEFORMAT="[%F %T] "
 # auto_cd is annoying; turn it off
 unsetopt AUTO_CD
 
+# cool globs
+setopt ksh_glob
+setopt extended_glob
+
 # os specific settings
 if [[ $OSTYPE =~ "darwin" ]]; then
   export HOMEBREW_CASK_OPTS="--appdir=$OSX_APPLICATION_PATH"
