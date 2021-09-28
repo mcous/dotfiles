@@ -1,2 +1,5 @@
 export POETRY_HOME="$HOME/.poetry"
-if [[ -f "$POETRY_HOME/env" ]]; then source "$POETRY_HOME/env"; fi
+
+if [[ -d "$POETRY_HOME/bin" ]]; then
+  export PATH="${PATH}:${POETRY_HOME}/bin"
+fi
