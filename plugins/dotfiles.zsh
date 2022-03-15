@@ -1,7 +1,4 @@
-_DOTFILES_DIR=${0%/*/*}
-_DOTFILES_SOURCE="$_DOTFILES_DIR/src"
-_DOTFILES_PRIVATE_SOURCE="$HOME/Dropbox/dotfiles"
-
+_SCRIPT_PATH=${0}
 _DOTFILES_MARKER="$HOME/.dotfiles"
 
 function _do_mkdir () {
@@ -66,13 +63,25 @@ function _reset_dotfiles () {
   fi
 }
 
+function _resolve_dirname () {
+  echo $(cd "$1" && pwd)
+}
+
+function _abs_dirname () {
+  echo $(_resolve_dirname "$(dirname "$1")")
+}
+
 function dotfiles () {
+  local script_dir=$(_abs_dirname $_SCRIPT_PATH)
+  local dotfiles_source=$(_resolve_dirname "$script_dir/../src")
+  local dotfiles_private=$(_resolve_dirname "$HOME/Dropbox/dotfiles")
+
   if [[ $1 == "--reset" ]]; then
     _reset_dotfiles
   fi
 
   if [[ ! -f $_DOTFILES_MARKER ]]; then
-    _link_files_in_dir $_DOTFILES_SOURCE
-    _link_files_in_dir $_DOTFILES_PRIVATE_SOURCE
+    _link_files_in_dir $dotfiles_source
+    _link_files_in_dir $dotfiles_private
   fi
 }
