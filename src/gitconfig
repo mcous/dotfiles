@@ -26,6 +26,9 @@
 [pull]
   rebase = true
 
+[init]
+  defaultBranch = main
+
 [delta]
   features = mantis-shrimp-lite
   navigate = true
