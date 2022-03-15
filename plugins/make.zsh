@@ -1,5 +1,5 @@
 # use gmake if available
-if command -v gmake 1>/dev/null 2>&1; then
+if (( $+commands[gmake] )); then
   alias make=gmake
 fi
 

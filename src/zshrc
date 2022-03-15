@@ -1,0 +1,5 @@
+# zshell config
+
+if command -v gmake 1>/dev/null 2>&1; then
+  eval "$(sheldon source)"
+fi

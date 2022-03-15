@@ -38,7 +38,5 @@ alias -g M="| most"
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
-alias h='history'
-alias hgrep="fc -El 0 | grep"
 alias p='ps -f'
 
