@@ -2,6 +2,6 @@ if [[ -d "$HOME/.local/bin" ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
+if $(( $+commands[pyenv] )); then
   eval "$(pyenv init --path)"
 fi
