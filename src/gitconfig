@@ -1,9 +1,10 @@
 [user]
   name = Mike Cousins
   email = mike@cousins.io
+  signingkey = 8E4A88742D97E862
 
-[include]
-  path = .gitconfig_local
+[commit]
+  gpgsign = true
 
 [core]
   editor = vim
@@ -67,3 +68,6 @@
     minus-emph-style = syntax bold red
     plus-emph-style = syntax bold green
     whitespace-error-style = purple bold
+
+[include]
+  path = .gitconfig_local
