@@ -2,6 +2,9 @@
 
 shell = "zsh"
 
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 use = ["{{ name }}.zsh"]
@@ -12,10 +15,15 @@ use = ["{{ name }}.zsh"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["source", "fpath"]
 
 [plugins.zsh-history-substring-search]
 github = "zsh-users/zsh-history-substring-search"
 use = ["{{ name }}.zsh"]
 
 [plugins.local]
-local = "~/projects/dotfiles/plugins"
+github = "mcous/dotfiles"
+use = ["plugins/*.zsh"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'

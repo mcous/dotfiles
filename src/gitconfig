@@ -69,5 +69,9 @@
     plus-emph-style = syntax bold green
     whitespace-error-style = purple bold
 
+[hub]
+	protocol = ssh
+
 [include]
   path = .gitconfig_local
+
