@@ -23,7 +23,7 @@ use = ["{{ name }}.zsh"]
 
 [plugins.local]
 github = "mcous/dotfiles"
-use = ["plugins/*zsh"]
+use = ["plugins/*.zsh"]
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
