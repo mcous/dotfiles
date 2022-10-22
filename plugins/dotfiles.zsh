@@ -80,7 +80,7 @@ function dotfiles () {
     _reset_dotfiles
   fi
 
-  if [[ ! -f $_DOTFILES_MARKER ]]; then
+  if [[ ! -f $_DOTFILES_MARKER || ($1 == "--reset" && $DRYRUN) ]]; then
     _link_files_in_dir $dotfiles_source
     _link_files_in_dir $dotfiles_private
   fi

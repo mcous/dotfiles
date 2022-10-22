@@ -63,6 +63,7 @@ _autosave*
 .ropeproject
 .mypy_cache
 .pytest_cache
+.dmypy.json
 
 # vscode #
 ##########
