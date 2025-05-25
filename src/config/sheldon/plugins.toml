@@ -5,12 +5,12 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-use = ["{{ name }}.zsh"]
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
 use = ["{{ name }}.zsh"]
 
 [plugins.zsh-completions]
@@ -21,8 +21,11 @@ apply = ["source", "fpath"]
 github = "zsh-users/zsh-history-substring-search"
 use = ["{{ name }}.zsh"]
 
+[plugins.zsh-vi-mode]
+github = 'jeffreytse/zsh-vi-mode'
+
 [plugins.local]
-github = "mcous/dotfiles"
+local = "~/projects/dotfiles"
 use = ["plugins/*.zsh"]
 
 [plugins.compinit]

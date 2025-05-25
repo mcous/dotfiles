@@ -1,9 +1,12 @@
 [user]
-  name = Mike Cousins
-  email = mike@cousins.io
+  name = Michael Cousins
+  email = michael@cousins.io
   signingkey = 8E4A88742D97E862
 
 [commit]
+  gpgsign = true
+
+[tag]
   gpgsign = true
 
 [core]
@@ -74,4 +77,3 @@
 
 [include]
   path = .gitconfig_local
-

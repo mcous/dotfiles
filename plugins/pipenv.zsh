@@ -1,1 +1,0 @@
-alias per='pipenv run'

@@ -5,7 +5,7 @@ Dotfiles and `zsh` configuration. Requires [sheldon] and [starship].
 ```shell
 brew install sheldown starship
 git clone git@github.com:mcous/dotfiles.git
-source dotfiles/plugins/dotfiles.zsh
+source projects/dotfiles/plugins/dotfiles.zsh
 dotfiles
 exit
 ```

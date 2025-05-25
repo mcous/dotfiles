@@ -56,10 +56,10 @@ function _reset_dotfiles () {
     linked_files=( $(<$_DOTFILES_MARKER) )
 
     for f in $linked_files; do
-      _do_rm $f
+      _do_rm "$f"
     done
 
-    _do_rm $_DOTFILES_MARKER
+    _do_rm "$_DOTFILES_MARKER"
   fi
 }
 
@@ -81,7 +81,7 @@ function dotfiles () {
   fi
 
   if [[ ! -f $_DOTFILES_MARKER || ($1 == "--reset" && $DRYRUN) ]]; then
-    _link_files_in_dir $dotfiles_source
-    _link_files_in_dir $dotfiles_private
+    _link_files_in_dir "$dotfiles_source"
+    _link_files_in_dir "$dotfiles_private"
   fi
 }
