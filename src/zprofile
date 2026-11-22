@@ -1,13 +1,25 @@
+typeset -U path
+
 if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-if [[ -d "$HOME/.local/bin" ]]; then
-  export PATH="$HOME/.local/bin:$PATH"
+[[ -d $HOME/.local/bin ]] && path=($HOME/.local/bin $path)
+[[ -d $HOME/.docker/bin ]] && path+=($HOME/.docker/bin)
+[[ -d $HOME/go/bin ]] && path+=($HOME/go/bin)
+[[ -d /opt/homebrew/opt/postgresql@17/bin ]] && path=(/opt/homebrew/opt/postgresql@17/bin $path)
+
+if (( $+commands[nvim] )); then
+  export GIT_EDITOR=nvim
+else
+  export GIT_EDITOR=vim
 fi
 
-if (( $+commands[pyenv] )); then
-  eval "$(pyenv init --path)"
+if (( $+commands[zed] )); then
+  export EDITOR="zed --wait"
+else
+  export EDITOR=$GIT_EDITOR
 fi
+export VISUAL=$EDITOR

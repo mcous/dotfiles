@@ -5,5 +5,3 @@ unsetopt auto_cd
 setopt ksh_glob
 setopt extended_glob
 
-# vi mode
-bindkey -v

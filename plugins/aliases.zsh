@@ -39,3 +39,10 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 alias p='ps -f'
+
+alias h='history'
+alias hgrep="fc -El 0 | grep"
+
+if (( $+commands[nvim] )); then
+  alias vim=nvim
+fi

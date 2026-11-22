@@ -1,3 +1,76 @@
-if (( $+commands[sheldon] )); then
-  eval "$(sheldon source)"
+typeset -U path fpath
+setopt extended_glob
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1100000
+SAVEHIST=1000000
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds SAVEHIST
+setopt hist_ignore_all_dups   # drop older copies of a repeated command
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_reduce_blanks     # collapse extra whitespace
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # write each command as it runs; other panes see it when they start
+
+_dotfiles=${${(%):-%x}:A:h:h}
+_zsh_plugins=${XDG_DATA_HOME:-$HOME/.local/share}/zsh-plugins
+
+# Clone a GitHub plugin on first use, then source one of its files.
+_plug() {
+  local dir=$_zsh_plugins/${1:t}
+  [[ -d $dir ]] || git clone --quiet --depth 1 https://github.com/$1 $dir
+  source $dir/$2
+}
+
+# Pull the latest version of every plugin.
+zsh-plugins-update() {
+  setopt local_options null_glob
+  local dir
+  for dir in $_zsh_plugins/*/; do
+    git -C $dir pull --quiet --ff-only && print "updated ${${dir%/}:t}"
+  done
+}
+
+_plug zsh-users/zsh-completions zsh-completions.plugin.zsh
+
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
 fi
+
+bindkey -v
+KEYTIMEOUT=1
+
+# Show a block cursor in normal mode and a bar cursor otherwise.
+_vi_cursor() {
+  if [[ $KEYMAP == vicmd ]]; then print -n '\e[2 q'; else print -n '\e[6 q'; fi
+}
+zle-keymap-select() { _vi_cursor }
+zle-line-init() { _vi_cursor }
+zle -N zle-keymap-select
+zle -N zle-line-init
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M viins '^X^E' edit-command-line
+bindkey -M vicmd '^X^E' edit-command-line
+
+_plug zsh-users/zsh-autosuggestions zsh-autosuggestions.zsh
+
+for _f in $_dotfiles/plugins/*.zsh; do
+  source $_f
+done
+unset _f
+
+_plug zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
+_plug zsh-users/zsh-history-substring-search zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+[[ -n $terminfo[kcuu1] ]] && bindkey "$terminfo[kcuu1]" history-substring-search-up
+[[ -n $terminfo[kcud1] ]] && bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M vicmd k history-substring-search-up
+bindkey -M vicmd j history-substring-search-down
+
+[[ $TERM_PROGRAM == herdr ]] && export FORCE_HYPERLINK=1

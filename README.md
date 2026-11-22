@@ -1,17 +1,17 @@
 # dotfiles
 
-Dotfiles and `zsh` configuration. Requires [sheldon] and [starship].
+Dotfiles and `zsh` configuration. Uses [starship] for the prompt and [mise] for language versions. `zsh` plugins are cloned from GitHub on first shell start; update them with `zsh-plugins-update`.
 
 ```shell
-brew install sheldown starship
+brew install starship mise
 git clone git@github.com:mcous/dotfiles.git
 source projects/dotfiles/plugins/dotfiles.zsh
 dotfiles
 exit
 ```
 
-[sheldon]: https://sheldon.cli.rs/
 [starship]: https://starship.rs/
+[mise]: https://mise.jdx.dev/
 
 ## Adding/removing dotfiles
 
