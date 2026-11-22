@@ -1,5 +1,3 @@
-export CDPATH=.:$HOME:"$HOME/projects"
-
 # auto_cd is annoying; turn it off
 unsetopt auto_cd
 
